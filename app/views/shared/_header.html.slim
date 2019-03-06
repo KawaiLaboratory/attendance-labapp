@@ -1,0 +1,9 @@
+h1
+  AttendanceApp
+- if signed_in?
+  = link_to "ログアウト", log_out_path, method: :delete
+- else
+  p
+    | ログインしてください
+    br
+    | また新規登録に関しましては管理者までご連絡ください

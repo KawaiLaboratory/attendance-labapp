@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       sign_in(@lab)
       redirect_to root_path
     else
-      flash.now[:danger] = t('.flash.invalid_password')
+      flash.now[:danger] = "パスワードが間違っています"
       render 'new'
     end
   end
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
   def set_lab
     @lab = Laboratory.find_by!(loginname: session_params[:loginname])
   rescue
-    flash.now[:danger] = t('.flash.invalid_mail')
+    flash.now[:danger] = "ログイン名が間違っています"
     render action: 'new'
   end
   

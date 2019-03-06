@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'pages#index'
+  root 'laboratories#index'
   resources :laboratories, except: [:destroy, :new, :create]
   # ログイン/ログアウト用
   get  "log_in", to: "sessions#new"
