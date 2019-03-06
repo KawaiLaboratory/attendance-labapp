@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## overview
+- 研究室用の出席管理アプリ
+- できれば他研究室でも使えるようにしてぼくの偉大さを知らしめたい
 
-Things you may want to cover:
+## versions
+- Ruby
+  - 2.4.5
+- Rails
+  - 5.2.2
 
-* Ruby version
+## commands
+- Start Develop-Server
+  - rails s -b 0.0.0.0
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## URLs
+- Develop-Server
+  - https://app4lab-daidai08.c9users.io/
+- Production-Server
+  - soon
