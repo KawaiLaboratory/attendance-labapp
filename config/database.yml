@@ -49,6 +49,9 @@ test:
 #
 production:
   <<: *default
-  database: attendance-app_production
-  username: attendance-app
-  password: <%= ENV['ATTENDANCE-APP_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  # database: attendance-app_production
+  # username: attendance-app
+  # password: <%= ENV['ATTENDANCE-APP_DATABASE_PASSWORD'] %>
