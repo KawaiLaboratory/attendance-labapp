@@ -18,4 +18,6 @@
 - Develop-Server
   - https://app4lab-daidai08.c9users.io/
 - Production-Server
-  - soon
+  - https://attendance-labapp.herokuapp.com/
+- Heroku-Git
+  - https://git.heroku.com/attendance-labapp.git
