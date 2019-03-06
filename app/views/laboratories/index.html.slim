@@ -1,2 +1,5 @@
-h1 Laboratories#index
-p Find me in app/views/laboratories/index.html.slim
+h3
+  | メニュー
+
+= link_to "詳細", laboratory_path(@current_user.loginname)
+= link_to "設定", edit_laboratory_path(@current_user.loginname)
