@@ -1,7 +1,9 @@
 class LaboratoriesController < ApplicationController
   before_action :set_lab, only: [:show, :edit, :update]
+  before_action :check_name, only: [:show, :edit]
   
   def index
+    @lab = Laboratory.find(@current_user.id)
   end
 
   def show
@@ -11,11 +13,30 @@ class LaboratoriesController < ApplicationController
   end
 
   def update
+    if check_pass && @lab.update(lab_params)
+      redirect_to root_path, notice: "success"
+    else
+      render :edit
+    end
   end
   
   private
-  
+
   def set_lab
     @lab = Laboratory.find_by(loginname: params[:loginname])
+  end
+  
+  def check_name
+    if @current_user.loginname != params[:loginname]
+      redirect_to root_path,flash: {danger: '権限がありません'}
+    end
+  end
+  
+  def check_pass
+    params[:laboratory][:password] == params[:laboratory][:password_confirmation]
+  end
+  
+  def lab_params
+    params.require(:laboratory).permit(:displayname, :password, members_attributes:[:id, :name, :grade, :_destroy])
   end
 end

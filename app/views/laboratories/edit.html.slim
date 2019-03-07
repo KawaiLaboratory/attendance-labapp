@@ -1,2 +1,20 @@
-h1 Laboratories#edit
-p Find me in app/views/laboratories/edit.html.slim
+.form-horizontal
+  = form_for @lab do |f|
+    .form-group
+      = f.label :password
+      = f.password_field :password, class: 'form-control'
+    .form-group
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, class: 'form-control'
+    .form-group
+      = f.label :displayname
+      = f.text_field :displayname, class: 'form-control'
+    .form-group
+      = f.submit 'ログイン', class: 'btn btn-info'
+    h4 members
+    #member
+      = f.fields_for :members do |member|
+        = render "member_fields", f: member
+      .links
+        = link_to_add_association "メンバーを追加", f, :members
+    

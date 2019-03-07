@@ -1,7 +1,10 @@
 class Laboratory < ApplicationRecord
-  has_secure_password validations: true
+  has_secure_password
   
   validates :loginname, presence: true, uniqueness: true
+  
+  has_many :members, dependent: :destroy, inverse_of: :laboratory
+  accepts_nested_attributes_for :members, allow_destroy: true, reject_if: :reject_member
   
   def self.new_remember_token
     SecureRandom.urlsafe_base64
@@ -9,5 +12,13 @@ class Laboratory < ApplicationRecord
   
   def self.encrypt(token)
     Digest::SHA256.hexdigest(token.to_s)
+  end
+  
+  def to_param
+    loginname
+  end
+  
+  def reject_member(attributed)
+    attributed['name'].blank?
   end
 end
