@@ -1,9 +1,10 @@
 .form-horizontal
   = form_for @lab do |f|
-    .form-group
+    / とりあえずパスワード更新はできない処理で行く
+    /.form-group
       = f.label :password
       = f.password_field :password, class: 'form-control'
-    .form-group
+    /.form-group
       = f.label :password_confirmation
       = f.password_field :password_confirmation, class: 'form-control'
     .form-group

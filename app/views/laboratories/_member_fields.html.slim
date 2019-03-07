@@ -1,8 +1,9 @@
-.nested-fields
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
-  .form-group
-    = f.label :grade
-    = f.select :grade, Member.grades.keys, {}, class: 'form-control'
-  = link_to_remove_association "メンバーを削除", f
+.nested-fields.panel.panel-default
+  .panel-heading
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :grade
+      = f.select :grade, Member.grades.keys, {}, class: 'form-control'
+    = link_to_remove_association "メンバーを削除", f

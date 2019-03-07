@@ -13,7 +13,8 @@ class LaboratoriesController < ApplicationController
   end
 
   def update
-    if check_pass && @lab.update(lab_params)
+    #if check_pass && @lab.update(lab_params)
+    if @lab.update(lab_params)
       redirect_to root_path, notice: "success"
     else
       render :edit
@@ -32,11 +33,12 @@ class LaboratoriesController < ApplicationController
     end
   end
   
-  def check_pass
-    params[:laboratory][:password] == params[:laboratory][:password_confirmation]
-  end
+  # def check_pass
+  #   params[:laboratory][:password] == params[:laboratory][:password_confirmation]
+  # end
   
   def lab_params
-    params.require(:laboratory).permit(:displayname, :password, members_attributes:[:id, :name, :grade, :_destroy])
+    # params.require(:laboratory).permit(:displayname, :password, members_attributes:[:id, :name, :grade, :_destroy])
+    params.require(:laboratory).permit(:displayname, members_attributes:[:id, :name, :grade, :_destroy])
   end
 end

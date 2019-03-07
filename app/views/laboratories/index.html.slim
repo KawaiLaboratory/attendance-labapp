@@ -5,6 +5,8 @@ h3
 = link_to "詳細", laboratory_path(@current_user)
 = link_to "設定", edit_laboratory_path(@current_user)
 
-- @lab.members.order(grade: "DESC").each do |member|
+- @lab.members.order(:grade).each do |member|
   p
     = member.name
+    | : 
+    = member.status

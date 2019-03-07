@@ -12,7 +12,6 @@
 ## commands
 - Start Develop-Server
   - ```rails s -b 0.0.0.0```
-- 
 
 ## URLs
 - Develop-Server
