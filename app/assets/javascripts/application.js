@@ -12,8 +12,12 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require bootstrap
 //= require jquery
 //= require cocoon
+//= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+  console.log("It works on each visit!")
+})
