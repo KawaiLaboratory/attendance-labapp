@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
     remember_token = Laboratory.new_remember_token
     cookies.permanent[:user_remember_token] = remember_token
     # TODO: 多重ログイン用の応急処置、そのうちしっかりなおしたい
-    if user.remember_token.nil?
+    #if user.remember_token.nil?
       user.update!(remember_token: Laboratory.encrypt(remember_token))
-    end
+    #end
     @current_user = user
   end
   
