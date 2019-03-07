@@ -15,7 +15,7 @@ class LaboratoriesController < ApplicationController
   def update
     #if check_pass && @lab.update(lab_params)
     if @lab.update(lab_params)
-      redirect_to root_path, notice: "success"
+      redirect_to root_path, notice: "更新しました"
     else
       render :edit
     end
@@ -29,7 +29,7 @@ class LaboratoriesController < ApplicationController
   
   def check_name
     if @current_user.loginname != params[:loginname]
-      redirect_to root_path,flash: {danger: '権限がありません'}
+      redirect_to root_path, alert: "権限がありません"
     end
   end
   

@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2019_03_06_070742) do
 
   create_table "members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.integer "grade", default: 0, null: false
-    t.integer "status", default: 0, null: false
+    t.integer "grade", null: false
+    t.integer "status", null: false
     t.datetime "changed_at", null: false
     t.bigint "laboratory_id"
     t.datetime "created_at", null: false

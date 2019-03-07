@@ -10,7 +10,13 @@ html
   body
     = render "shared/header"
     .container
-      - flash.each do |key, value|
-        = content_tag(:div, value, class: "#{key}")
+      - if notice.present?
+        .alert.alert-info.alert-dismissible
+          button.close data-dismiss="alert" &times;
+          = notice
+      - if alert.present?
+        .alert.alert-danger.alert-dismissible
+          button.close data-dismiss="alert" &times;
+          = alert
       = yield
     = render "shared/footer"

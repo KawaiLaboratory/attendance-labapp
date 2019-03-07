@@ -8,16 +8,16 @@ class SessionsController < ApplicationController
   def create
     if @lab.authenticate(session_params[:password])
       sign_in(@lab)
-      redirect_to root_path
+      redirect_to root_path, notice: "ログインしました"
     else
-      flash.now[:danger] = "パスワードが間違っています"
+      flash.now[:alert] = "パスワードが間違っています"
       render 'new'
     end
   end
 
   def destroy
     sign_out
-    redirect_to log_in_path
+    redirect_to log_in_path, notice: "ログアウトしました"
   end
   
   private
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
   def set_lab
     @lab = Laboratory.find_by!(loginname: session_params[:loginname])
   rescue
-    flash.now[:danger] = "ログイン名が間違っています"
+    flash.now[:alert] = "ログイン名が間違っています"
     render action: 'new'
   end
   

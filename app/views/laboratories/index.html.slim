@@ -5,8 +5,21 @@ h3
 = link_to "詳細", laboratory_path(@current_user)
 = link_to "設定", edit_laboratory_path(@current_user)
 
-- @lab.members.order(:grade).each do |member|
-  p
-    = member.name
-    | : 
-    = member.status
+table.table.table-bordered
+  tr
+    th
+      | name
+    - @lab.members.statuses.each do |key, value|
+      th
+        = key
+  - @lab.members.order(:grade).each do |member|
+    tr
+      td
+        = member.name
+      - @lab.members.statuses.each do |key, value|
+        - if member.status == key
+          td
+            | X
+        - else
+          td
+            | &nbsp;
