@@ -2,5 +2,9 @@ h3
   = @lab.displayname
   | メニュー
 
-= link_to "詳細", laboratory_path(@current_user.loginname)
-= link_to "設定", edit_laboratory_path(@current_user.loginname)
+= link_to "詳細", laboratory_path(@current_user)
+= link_to "設定", edit_laboratory_path(@current_user)
+
+- @lab.members.order(grade: "DESC").each do |member|
+  p
+    = member.name
