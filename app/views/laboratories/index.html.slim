@@ -5,21 +5,20 @@ h3
 = link_to "詳細", laboratory_path(@current_user)
 = link_to "設定", edit_laboratory_path(@current_user)
 
-table.table.table-bordered
-  tr
-    th
-      | name
-    - @lab.members.statuses.each do |key, value|
-      th
-        = key
-  - @lab.members.order(:grade).each do |member|
+= form_tag members_path, method: :put do
+  table.table
     tr
       td
-        = member.name
+        | name
       - @lab.members.statuses.each do |key, value|
-        - if member.status == key
+        td
+          = key
+    - @lab.members.order(:grade).each do |member|
+      = fields_for "members[]", member do |mr|
+        tr
           td
-            | X
-        - else
-          td
-            | &nbsp;
+            = member.name
+          - @lab.members.statuses.each do |key, value|
+            td
+              = mr.radio_button :status, key, checked: member.status == key
+  = submit_tag

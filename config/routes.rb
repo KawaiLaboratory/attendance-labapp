@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'laboratories#index'
   resources :laboratories, except: [:destroy, :new, :create], param: :loginname
+  resource :members, only: [:update]
   # ログイン/ログアウト用
   get  "log_in", to: "sessions#new"
   post "log_in", to: "sessions#create"
