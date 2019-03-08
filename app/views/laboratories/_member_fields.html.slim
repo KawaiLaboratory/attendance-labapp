@@ -5,5 +5,5 @@
       = f.text_field :name, class: 'form-control'
     .form-group
       = f.label :grade
-      = f.select :grade, Member.grades.keys, {}, class: 'form-control'
+      = f.select :grade, Member.grades_i18n.map { |k,v| [v ,k]}, {}, class: 'form-control'
     = link_to_remove_association "メンバーを削除", f

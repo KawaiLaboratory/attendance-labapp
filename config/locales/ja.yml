@@ -14,3 +14,13 @@ ja:
         job_hunt: 就活
         absence: 病欠
         homecaming: 帰省
+      grade:
+        teacher: 教員
+        doctor:  博士課程
+        m_2nd:   修士2年
+        m_1st:   修士1年
+        b_4th:   学部4年
+        b_3rd:   学部3年
+        b_2nd:   学部2年
+        b_1st:   学部1年
+        others:  その他
