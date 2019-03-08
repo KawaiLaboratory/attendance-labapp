@@ -5,13 +5,13 @@ h3
 = link_to "詳細", laboratory_path(@current_user)
 = link_to "設定", edit_laboratory_path(@current_user)
 
-= form_tag members_path, method: :put do
+/= form_tag members_path, method: :put do
   table.table
     tr
-      td
+      th
         | name
       - @lab.members.statuses.each do |key, value|
-        td
+        th
           = key
     - @lab.members.order(:grade).each do |member|
       = fields_for "members[]", member do |mr|
@@ -19,6 +19,16 @@ h3
           td
             = member.name
           - @lab.members.statuses.each do |key, value|
-            td
-              = mr.radio_button :status, key, checked: member.status == key
+              td
+                = mr.radio_button :status, key, inline: true
   = submit_tag
+
+= form_tag members_path, method: :put do
+  - @lab.members.order(:grade).each do |member|
+    = fields_for "members[]", member do |mr|
+      .btn-group data-toggle="buttons"
+        - @lab.members.statuses.each do |key, value|
+          .btn.btn-default
+            = mr.radio_button :status, key, autocomplete: "off"
+            = mr.label :status, key
+  
