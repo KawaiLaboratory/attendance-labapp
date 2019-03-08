@@ -1,0 +1,16 @@
+ja:
+  enums:
+    member:
+      status:
+        office: 在室
+        experiment: 実験室
+        machining: 加工室
+        cafeteria: 昼食
+        classwork: 授業
+        ogigaoka: 扇が丘
+        off_campus: 学外
+        at_home: 帰宅
+        late: 遅刻
+        job_hunt: 就活
+        absence: 病欠
+        homecaming: 帰省
