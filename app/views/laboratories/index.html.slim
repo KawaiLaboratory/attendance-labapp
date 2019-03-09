@@ -14,7 +14,7 @@
             tr
               td
                 = member.lastname
-                br
+                | &nbsp;
                 = member.firstname
               - @lab.members.statuses_i18n.each do |key, value|
                 td
