@@ -3,7 +3,7 @@ class LaboratoriesController < ApplicationController
   before_action :check_name, only: [:show, :edit]
   
   def index
-    @lab = Laboratory.find(@current_user.id)
+    @lab = @current_user
   end
 
   def show

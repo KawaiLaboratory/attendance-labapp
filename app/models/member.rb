@@ -1,4 +1,5 @@
 class Member < ApplicationRecord
+  has_many   :logs
   belongs_to :laboratory
   
   validates :name      , presence: true
@@ -27,9 +28,9 @@ class Member < ApplicationRecord
     office:      0,
     experiment:  1,
     machining:   2,
-    cafeteria:   3,
-    classwork:   4,
-    ogigaoka:    5,
+    ogigaoka:    3,
+    cafeteria:   4,
+    classwork:   5,
     off_campus:  6,
     at_home:     7,
     late:        8,
@@ -37,4 +38,9 @@ class Member < ApplicationRecord
     absence:    10,
     homecaming: 11,
   }
+  
+  def active_times
+    active_logs = logs.where(status: 0..3)
+    active_logs.sum(:total_time)
+  end
 end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  elapsed_time: 2019-03-08 05:28:54
+  status: 1
+  member: one
+
+two:
+  elapsed_time: 2019-03-08 05:28:54
+  status: 1
+  member: two

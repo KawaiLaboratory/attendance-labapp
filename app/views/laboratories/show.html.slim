@@ -1,1 +1,18 @@
-= @lab.displayname
+table.table
+  thead
+    tr
+      th
+        | 名前
+      th
+        | 活動時間
+  tbody
+    - @lab.members.order(:grade).each do |member|
+      tr
+        td
+          = member.name
+        td
+          - if member.logs.blank?
+            | 0
+          - else
+            = member.active_times/360
+          | [h]

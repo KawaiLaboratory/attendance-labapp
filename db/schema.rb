@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_070742) do
+ActiveRecord::Schema.define(version: 2019_03_08_052854) do
 
   create_table "laboratories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "loginname", default: "", null: false
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2019_03_06_070742) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["loginname"], name: "index_laboratories_on_loginname", unique: true
+  end
+
+  create_table "logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "total_time", default: 0, null: false
+    t.integer "status", null: false
+    t.bigint "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_logs_on_member_id"
   end
 
   create_table "members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -34,5 +43,6 @@ ActiveRecord::Schema.define(version: 2019_03_06_070742) do
     t.index ["laboratory_id"], name: "index_members_on_laboratory_id"
   end
 
+  add_foreign_key "logs", "members"
   add_foreign_key "members", "laboratories"
 end
