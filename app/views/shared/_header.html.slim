@@ -1,8 +1,11 @@
-= link_to "AttendanceApp", root_path
-- if signed_in?
-  = link_to "ログアウト", log_out_path, method: :delete
-- else
-  p
-    | ログインしてください
-    br
-    | また新規登録に関しましては管理者までご連絡ください
+nav.navbar.navbar-inverse.navbar-static-top
+  .container
+    = link_to "AttendanceApp", root_path, class: "navbar-brand"
+    
+    - if signed_in?
+      .pull-right
+        .btn-group
+          = link_to "詳細", laboratory_path(@current_user), class: "btn btn-success navbar-btn"
+          = link_to "設定", edit_laboratory_path(@current_user), class: "btn btn-info navbar-btn"
+          = link_to "ログアウト", log_out_path, method: :delete, class: "btn navbar-btn btn-default"
+      .clearfix

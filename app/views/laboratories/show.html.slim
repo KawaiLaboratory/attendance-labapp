@@ -9,7 +9,9 @@ table.table
     - @lab.members.order(:grade).each do |member|
       tr
         td
-          = member.name
+          = member.lastname
+          | &nbsp;
+          = member.firstname
         td
           - if member.logs.blank?
             | 0

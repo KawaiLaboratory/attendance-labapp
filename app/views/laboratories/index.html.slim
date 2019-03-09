@@ -1,36 +1,32 @@
-h3
-  = @lab.displayname
-  | メニュー
-
-.btn-group
-  = link_to "詳細", laboratory_path(@current_user), class: "btn btn-success"
-  = link_to "設定", edit_laboratory_path(@current_user), class: "btn btn-info"
-
-= form_tag members_path, method: :put do
-  table.table
-    thead
-      tr.row
-        th.col-sm-1
-          | 名前
-        - @lab.members.statuses_i18n.each do |key, value|
-          th.col-sm-1
-            = value
-    tbody
-      - @lab.members.order(:grade).each do |member|
-        = fields_for "members[]", member do |mr|
-          tr.row
-            td.col-sm-1
-              = member.name
-            - @lab.members.statuses_i18n.each do |key, value|
-              td.col-sm-1
-                - if member.status == key
-                  label.btn.btn-warning.btn-attendance
-                    = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
-                    label
+- if @lab.members.present?
+  = form_tag members_path, method: :put do
+    table.table.table-bordered.table-condensed.table-responsive
+      thead
+        tr
+          th
+            | 名前
+          - @lab.members.statuses_i18n.each do |key, value|
+            th.col-sm-1
+              = value
+      tbody
+        - @lab.members.order(:grade).each do |member|
+          = fields_for "members[]", member do |mr|
+            tr
+              td
+                = member.lastname
+                br
+                = member.firstname
+              - @lab.members.statuses_i18n.each do |key, value|
+                td
+                  - if member.status == key
+                    label.btn.btn-warning.btn-attendance
                       | here
-                - else
-                  label.btn.btn-primary.btn-attendance
-                    = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
-                    label
+                      = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
+                  - else
+                    label.btn.btn-primary.btn-attendance
                       | &nbsp;
+                      = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
   = submit_tag "更新", class: "btn btn-default"
+- else
+  h4
+    | メンバーを登録してください

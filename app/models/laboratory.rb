@@ -1,9 +1,13 @@
 class Laboratory < ApplicationRecord
   has_secure_password
   
-  validates :loginname,   presence: true, uniqueness: true
+  validates :loginname,   presence: true, uniqueness: true, format: { with: /\A[a-z0-9]+\z/i }
   validates :displayname, presence: true
   validates :place,       presence: true
+  
+  attribute :loginname,   :string  , default: -> { "laboratory#{DateTime.current.to_i}" }
+  attribute :displayname, :string  , default: -> { "研究室" }
+  attribute :place,       :integer , default: -> { places.keys.index("others") }
   
   has_many :members, dependent: :destroy, inverse_of: :laboratory
   accepts_nested_attributes_for :members, allow_destroy: true, reject_if: :reject_member
@@ -29,6 +33,6 @@ class Laboratory < ApplicationRecord
   end
   
   def reject_member(attributed)
-    attributed['name'].blank?
+    attributed['lastname'].blank? || attributed['firstname'].blank?
   end
 end

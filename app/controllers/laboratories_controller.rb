@@ -14,6 +14,7 @@ class LaboratoriesController < ApplicationController
 
   def update
     #if check_pass && @lab.update(lab_params)
+    binding.pry
     if @lab.update(lab_params)
       redirect_to root_path, notice: "更新しました"
     else
@@ -39,6 +40,6 @@ class LaboratoriesController < ApplicationController
   
   def lab_params
     # params.require(:laboratory).permit(:displayname, :password, members_attributes:[:id, :name, :grade, :_destroy])
-    params.require(:laboratory).permit(:displayname, members_attributes:[:id, :name, :grade, :_destroy])
+    params.require(:laboratory).permit(:displayname, :place, members_attributes:[:id, :lastname, :firstname, :go_cafeteria, :grade, :_destroy])
   end
 end

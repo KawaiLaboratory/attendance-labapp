@@ -33,10 +33,12 @@ ActiveRecord::Schema.define(version: 2019_03_08_052854) do
   end
 
   create_table "members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.string "firstname", default: "", null: false
+    t.string "lastname", default: "", null: false
     t.integer "grade", null: false
     t.integer "status", null: false
     t.datetime "changed_at", null: false
+    t.boolean "go_cafeteria", default: true, null: false
     t.bigint "laboratory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

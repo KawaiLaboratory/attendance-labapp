@@ -1,9 +1,23 @@
 .nested-fields.panel.panel-default
   .panel-heading
-    .form-group
-      = f.label :name
-      = f.text_field :name, class: 'form-control'
-    .form-group
-      = f.label :grade
-      = f.select :grade, Member.grades_i18n.map { |k,v| [v ,k]}, {}, class: 'form-control'
-    = link_to_remove_association "メンバーを削除", f
+    .row
+      .col-sm-6
+        .form-group
+          = f.label :lastname
+          = f.text_field :lastname, class: 'form-control'
+      .col-sm-6
+        .form-group
+          = f.label :firstname
+          = f.text_field :firstname, class: 'form-control'
+    .row
+      .col-sm-6
+        .form-group
+          = f.label :grade
+          = f.select :grade, Member.grades_i18n.map { |k,v| [v ,k]}, {}, class: 'form-control'
+      .col-sm-6
+        .form-group
+          = f.label :go_cafeteria
+          = f.select :go_cafeteria, [["行く", 1], ["行かない", 0]], {}, class: 'form-control'
+    .pull-right
+      = link_to_remove_association "メンバーを削除", f, class: "btn btn-danger"
+    .clearfix

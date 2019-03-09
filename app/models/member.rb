@@ -2,15 +2,19 @@ class Member < ApplicationRecord
   has_many   :logs
   belongs_to :laboratory
   
-  validates :name      , presence: true
-  validates :changed_at, presence: true
-  validates :status    , presence: true
-  validates :grade     , presence: true
+  validates :lastname     , presence: true
+  validates :firstname    , presence: true
+  validates :changed_at   , presence: true
+  validates :status       , presence: true
+  validates :grade        , presence: true
+  validates :go_cafeteria , presence: true
   
-  attribute :name      , :string  , default: -> { "" }
-  attribute :changed_at, :datetime, default: -> { DateTime.current }
-  attribute :status    , :integer , default: -> { statuses.keys.index("at_home") }
-  attribute :grade     , :integer , default: -> { grades.keys.index("others") }
+  attribute :lastname     , :string  , default: -> { "" }
+  attribute :firstname    , :string  , default: -> { "" }
+  attribute :changed_at   , :datetime, default: -> { DateTime.current }
+  attribute :status       , :integer , default: -> { statuses.keys.index("at_home") }
+  attribute :grade        , :integer , default: -> { grades.keys.index("others") }
+  attribute :go_cafeteria , :boolean , default: -> { true }
   
   enum grade: {
     teacher: 0,
