@@ -1,7 +1,7 @@
 class Laboratory < ApplicationRecord
   has_secure_password
   
-  validates :loginname,   presence: true, uniqueness: true, format: { with: /\A[a-z0-9]+\z/i }
+  validates :loginname,   presence: true, uniqueness: true, format: { with: /\A[\w@-]*[A-Za-z][\w@-]*\z/ }
   validates :displayname, presence: true
   validates :place,       presence: true
   
