@@ -7,7 +7,7 @@ class Member < ApplicationRecord
   validates :changed_at   , presence: true
   validates :status       , presence: true
   validates :grade        , presence: true
-  validates :go_cafeteria , presence: true
+  validates :go_cafeteria , inclusion: { in: [true, false] }
   
   attribute :lastname     , :string  , default: -> { "" }
   attribute :firstname    , :string  , default: -> { "" }

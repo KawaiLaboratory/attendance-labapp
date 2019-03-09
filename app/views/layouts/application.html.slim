@@ -9,7 +9,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     = render "shared/header"
-    .container
+    .container-fluid
       - if notice.present?
         .alert.alert-info.alert-dismissible
           button.close data-dismiss="alert" &times;
