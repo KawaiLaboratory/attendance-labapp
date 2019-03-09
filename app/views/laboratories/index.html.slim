@@ -2,28 +2,35 @@ h3
   = @lab.displayname
   | メニュー
 
-= link_to "詳細", laboratory_path(@current_user)
-= link_to "設定", edit_laboratory_path(@current_user)
+.btn-group
+  = link_to "詳細", laboratory_path(@current_user), class: "btn btn-success"
+  = link_to "設定", edit_laboratory_path(@current_user), class: "btn btn-info"
 
 = form_tag members_path, method: :put do
-  .row
-    .col-sm-2
-      | 名前
-    .col-sm-10
-      - @lab.members.statuses_i18n.each do |key, value|
-        .col-sm-1
-          = value
-  - @lab.members.order(:grade).each do |member|
-    = fields_for "members[]", member do |mr|
-      .row
-        .col-sm-2
-          = mr.label member.name
-        .btn-group.col-sm-10 data-toggle="buttons"
-          - @lab.members.statuses.each do |key, value|
-            div class="btn col-sm-1 #{key == member.status ? 'btn-warning' : 'btn-primary'}"
-              = mr.radio_button :status, key, autocomplete: "off"
-              = mr.label :status
-                | &nbsp;
-
-  = submit_tag
-  
+  table.table
+    thead
+      tr.row
+        th.col-sm-1
+          | 名前
+        - @lab.members.statuses_i18n.each do |key, value|
+          th.col-sm-1
+            = value
+    tbody
+      - @lab.members.order(:grade).each do |member|
+        = fields_for "members[]", member do |mr|
+          tr.row
+            td.col-sm-1
+              = member.name
+            - @lab.members.statuses_i18n.each do |key, value|
+              td.col-sm-1
+                - if member.status == key
+                  label.btn.btn-warning.btn-attendance
+                    = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
+                    label
+                      | here
+                - else
+                  label.btn.btn-primary.btn-attendance
+                    = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
+                    label
+                      | &nbsp;
+  = submit_tag "更新", class: "btn btn-default"

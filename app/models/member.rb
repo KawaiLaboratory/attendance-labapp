@@ -33,10 +33,9 @@ class Member < ApplicationRecord
     classwork:   5,
     off_campus:  6,
     at_home:     7,
-    late:        8,
-    job_hunt:    9,
-    absence:    10,
-    homecaming: 11,
+    job_hunt:    8,
+    absence:     9,
+    homecaming: 10,
   }
   
   def active_times

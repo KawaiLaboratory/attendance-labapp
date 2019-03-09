@@ -10,7 +10,6 @@ ja:
         ogigaoka: 扇が丘
         off_campus: 学外
         at_home: 帰宅
-        late: 遅刻
         job_hunt: 就活
         absence: 病欠
         homecaming: 帰省
@@ -24,3 +23,10 @@ ja:
         b_2nd:   学部2年
         b_1st:   学部1年
         others:  その他
+    laboratory:
+      place:
+        ogigaoka:   扇が丘
+        building74: 74号館
+        building61: 61号館
+        building65: 65号館
+        others:     その他

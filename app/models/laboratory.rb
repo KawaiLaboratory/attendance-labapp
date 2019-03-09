@@ -12,7 +12,8 @@ class Laboratory < ApplicationRecord
     ogigaoka:   0,
     building74: 1,
     building61: 2,
-    building65: 3
+    building65: 3,
+    others:     4
   }
   
   def self.new_remember_token
