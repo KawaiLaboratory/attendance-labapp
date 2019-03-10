@@ -3,13 +3,13 @@ class Laboratory < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :rememberable, :validatable
   
-  validates :loginname,   presence: true, uniqueness: true, format: { with: /\A[\w@-]*[A-Za-z][\w@-]*\z/ }
-  validates :displayname, presence: true
-  validates :place,       presence: true
+  validates :name        , presence: true, uniqueness: true, format: { with: /\A[\w@-]*[A-Za-z][\w@-]*\z/ }
+  validates :displayname , presence: true
+  validates :place       , presence: true
   
-  attribute :loginname,   :string  , default: -> { "laboratory#{DateTime.current.to_i}" }
-  attribute :displayname, :string  , default: -> { "研究室" }
-  attribute :place,       :integer , default: -> { places.keys.index("others") }
+  attribute :name        , :string  , default: -> { "laboratory-#{SecureRandom.hex(10)}" }
+  attribute :displayname , :string  , default: -> { "研究室" }
+  attribute :place       , :integer , default: -> { places.keys.index("others") }
   
   has_many :members, dependent: :destroy, inverse_of: :laboratory
   accepts_nested_attributes_for :members, allow_destroy: true, reject_if: :reject_member
@@ -23,7 +23,7 @@ class Laboratory < ApplicationRecord
   }
 
   def to_param
-    loginname
+    name
   end
   
   def reject_member(attributed)

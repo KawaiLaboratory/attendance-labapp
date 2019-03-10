@@ -13,6 +13,7 @@ class LaboratoriesController < ApplicationController
 
   def update
     #if check_pass && @lab.update(lab_params)
+    binding.pry
     if @lab.update(lab_params)
       redirect_to root_path, notice: "更新しました"
     else
@@ -23,7 +24,11 @@ class LaboratoriesController < ApplicationController
   private
 
   def set_lab
-    @lab = Laboratory.find_by(loginname: params[:loginname])
+    if params[:name] == current_laboratory.name
+      @lab = Laboratory.find_by(name: params[:name] )
+    else
+      redirect_to root_path, alert: "URLが間違っています"
+    end
   end
   
   def lab_params
