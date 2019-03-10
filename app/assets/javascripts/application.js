@@ -21,7 +21,9 @@
 $(document).on('turbolinks:load', function(){
   $(function(){
     $('.btn_radio').change( function() {
-      $(this).closest('label').removeClass("btn-primary").addClass("btn-success");
+      var nextStatus = $('input[name^="members"]:checked').closest("label");
+      $(".btn_radio").closest("label").not(nextStatus).removeClass("btn-success").addClass("btn-primary");
+      nextStatus.removeClass("btn-primary").addClass("btn-success");
     });
   });
 });
