@@ -20,6 +20,10 @@ gem "font-awesome-rails"
 gem "cocoon"
 gem 'rails-i18n', '~> 5.1'
 gem 'enum_help'
+gem "devise"
+gem "devise-i18n"
+gem "devise-i18n-views"
+gem "devise-bootstrap-views"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

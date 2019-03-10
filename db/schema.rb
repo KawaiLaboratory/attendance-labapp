@@ -10,16 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_052854) do
+ActiveRecord::Schema.define(version: 2019_03_10_015843) do
 
   create_table "laboratories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "loginname", default: "", null: false
     t.string "displayname", default: "", null: false
     t.integer "place", null: false
-    t.string "password_digest", default: "", null: false
-    t.string "remember_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_laboratories_on_email", unique: true
     t.index ["loginname"], name: "index_laboratories_on_loginname", unique: true
   end
 

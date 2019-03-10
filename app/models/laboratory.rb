@@ -1,5 +1,7 @@
 class Laboratory < ApplicationRecord
-  has_secure_password
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :rememberable, :validatable
   
   validates :loginname,   presence: true, uniqueness: true, format: { with: /\A[\w@-]*[A-Za-z][\w@-]*\z/ }
   validates :displayname, presence: true
@@ -19,15 +21,7 @@ class Laboratory < ApplicationRecord
     building65: 3,
     others:     4
   }
-  
-  def self.new_remember_token
-    SecureRandom.urlsafe_base64
-  end
-  
-  def self.encrypt(token)
-    Digest::SHA256.hexdigest(token.to_s)
-  end
-  
+
   def to_param
     loginname
   end
