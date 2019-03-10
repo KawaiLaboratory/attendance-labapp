@@ -13,7 +13,6 @@ class LaboratoriesController < ApplicationController
 
   def update
     #if check_pass && @lab.update(lab_params)
-    binding.pry
     if @lab.update(lab_params)
       redirect_to root_path, notice: "更新しました"
     else
