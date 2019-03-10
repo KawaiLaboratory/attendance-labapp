@@ -8,9 +8,9 @@ ja:
         cafeteria: 昼食
         classwork: 授業
         ogigaoka: 扇が丘
-        off_campus: 学外
-        at_home: 帰宅
-        job_hunt: 就活
+        offcampus: 学外
+        athome: 帰宅
+        jobhunt: 就活
         absence: 病欠
         homecaming: 帰省
       grade:

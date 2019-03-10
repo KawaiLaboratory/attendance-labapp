@@ -12,7 +12,7 @@ class Member < ApplicationRecord
   attribute :lastname     , :string  , default: -> { "" }
   attribute :firstname    , :string  , default: -> { "" }
   attribute :changed_at   , :datetime, default: -> { DateTime.current }
-  attribute :status       , :integer , default: -> { statuses.keys.index("at_home") }
+  attribute :status       , :integer , default: -> { statuses.keys.index("athome") }
   attribute :grade        , :integer , default: -> { grades.keys.index("others") }
   attribute :go_cafeteria , :boolean , default: -> { true }
   
@@ -35,9 +35,9 @@ class Member < ApplicationRecord
     ogigaoka:    3,
     cafeteria:   4,
     classwork:   5,
-    off_campus:  6,
-    at_home:     7,
-    job_hunt:    8,
+    offcampus:  6,
+    athome:     7,
+    jobhunt:    8,
     absence:     9,
     homecaming: 10,
   }

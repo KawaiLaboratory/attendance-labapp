@@ -11,7 +11,7 @@
       tbody
         - current_laboratory.members.order(:grade).each do |member|
           = fields_for "members[]", member do |mr|
-            tr
+            tr id="tr_#{member.id}"
               td
                 = member.lastname
                 | &nbsp;

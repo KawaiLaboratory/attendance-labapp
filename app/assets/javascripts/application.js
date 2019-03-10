@@ -17,3 +17,9 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(function(){
+  $('.btn_radio').change( function() {
+    $(this).closest('label').removeClass("btn-primary").addClass("btn-success");
+  });
+});
