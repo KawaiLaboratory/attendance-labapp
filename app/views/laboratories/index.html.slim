@@ -1,31 +1,32 @@
 - if current_laboratory.members.present?
   = form_tag members_path, method: :put do
-    table.table.table-bordered.table-condensed.table-responsive
-      thead
-        tr
-          th
-            | 名前
-          - current_laboratory.members.statuses_i18n.each do |key, value|
-            th.col-sm-1
-              = value
-      tbody
-        - current_laboratory.members.order(:grade).each do |member|
-          = fields_for "members[]", member do |mr|
-            tr id="tr_#{member.id}"
-              td
-                = member.lastname
-                | &nbsp;
-                = member.firstname
-              - current_laboratory.members.statuses_i18n.each do |key, value|
-                td.statuses
-                  - if member.status == key
-                    label.btn.btn-warning.btn-attendance
-                      | here
-                      = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
-                  - else
-                    label.btn.btn-primary.btn-attendance
-                      | &nbsp;
-                      = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
+    .table-responsive
+      table.table.table-bordered.table-condensed
+        thead
+          tr
+            th.text-nowrap
+              | 名前
+            - current_laboratory.members.statuses_i18n.each do |key, value|
+              th.text-nowrap
+                = value
+        tbody
+          - current_laboratory.members.order(:grade).each do |member|
+            = fields_for "members[]", member do |mr|
+              tr
+                td
+                  = member.lastname
+                  | &nbsp;
+                  = member.firstname
+                - current_laboratory.members.statuses_i18n.each do |key, value|
+                  td.statuses
+                    - if member.status == key
+                      label.btn.btn-warning.btn-attendance
+                        | here
+                        = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
+                    - else
+                      label.btn.btn-primary.btn-attendance
+                        | &nbsp;
+                        = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
     = submit_tag "更新", class: "btn btn-success btn-lg"
 - else
   h4
