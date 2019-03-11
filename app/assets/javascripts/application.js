@@ -22,7 +22,7 @@ $(document).on('turbolinks:load', function(){
   $(function(){
     $('.btn_radio').change( function() {
       var nextStatus = $('input[name^="members"]:checked').closest("label");
-      $(".btn_radio").closest("label.btn-success").not(nextStatus).removeClass("btn-success").addClass("btn-primary");
+      $(".btn_radio").closest("label.btn-success").not(nextStatus).removeClass("btn-success").addClass("btn-default");
       nextStatus.removeClass("btn-primary").addClass("btn-success");
     });
   });

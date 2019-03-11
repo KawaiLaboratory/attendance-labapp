@@ -16,6 +16,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'slim-rails'
 gem "jquery-rails"
 gem 'bootstrap-sass'
+gem "bootswatch-rails"
 gem "font-awesome-rails"
 gem "cocoon"
 gem 'rails-i18n', '~> 5.1'
