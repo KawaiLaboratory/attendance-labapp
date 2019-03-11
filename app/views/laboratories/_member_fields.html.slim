@@ -19,5 +19,5 @@
           = f.label :go_cafeteria
           = f.select :go_cafeteria, [["行く", true], ["行かない", false]], {}, class: 'form-control'
     .pull-right
-      = link_to_remove_association "メンバーを削除", f, class: "btn btn-danger"
+      = link_to_remove_association "メンバーを削除", f, class: "btn btn-danger", data: {confirm: '削除してよろしいですか？'}
     .clearfix
