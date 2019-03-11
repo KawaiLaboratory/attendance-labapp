@@ -17,7 +17,7 @@
                 | &nbsp;
                 = member.firstname
               - current_laboratory.members.statuses_i18n.each do |key, value|
-                td
+                td.statuses
                   - if member.status == key
                     label.btn.btn-warning.btn-attendance
                       | here
