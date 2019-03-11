@@ -4,30 +4,34 @@
       table.table.table-bordered.table-condensed
         thead
           tr
-            th.text-nowrap
-              | 名前
-            - current_laboratory.members.statuses_i18n.each do |key, value|
-              th.text-nowrap
-                = value
+            .row
+              th.text-nowrap.col-xs-1.text-center
+                | 名前
+              - current_laboratory.members.statuses_i18n.each do |key, value|
+                th.text-nowrap.col-xs-1.text-center
+                  = value
         tbody
           - current_laboratory.members.order(:grade).each do |member|
             = fields_for "members[]", member do |mr|
               tr
-                td
-                  = member.lastname
-                  | &nbsp;
-                  = member.firstname
-                - current_laboratory.members.statuses_i18n.each do |key, value|
-                  td.statuses
-                    - if member.status == key
-                      label.btn.btn-warning.btn-attendance
-                        | here
-                        = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
-                    - else
-                      label.btn.btn-primary.btn-attendance
+                .row
+                  td.col-xs-1.text-center
+                    = member.lastname
+                    | &nbsp;
+                    = member.firstname
+                  - current_laboratory.members.statuses_i18n.each do |key, value|
+                    td.statuses.col-xs-1
+                      label class="btn btn-attendance #{member.status == key ? 'btn-warning' : 'btn-primary' }"
                         | &nbsp;
                         = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
-    = submit_tag "更新", class: "btn btn-success btn-lg"
+                        
+    .row
+      .col-sm-8.col-sm-offset-2
+        = submit_tag "更新", class: "btn btn-default col-xs-3", name: "update_status"
+        = submit_tag "食事", class: "btn btn-default col-xs-3", name: "go_cafeteria"
+        = submit_tag "食事終了", class: "btn btn-default col-xs-3", name: "finished_lanch"
+        = submit_tag "全員帰宅", class: "btn btn-default col-xs-3", name: "go_home"
+
 - else
   h4
     | メンバーを登録してください
