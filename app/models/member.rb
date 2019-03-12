@@ -43,7 +43,14 @@ class Member < ApplicationRecord
   }
   
   def active_times
-    active_logs = logs.where(status: 0..3)
-    active_logs.sum(:total_time)
+    logs.where(status: 0..3).sum(:total_time)
+  end
+  
+  def change_status(next_status, now)
+    logs.build(
+      total_time: (now.to_i - changed_at.to_i),
+      status: status
+    )
+    update(status: next_status, changed_at: now)
   end
 end
