@@ -11,7 +11,7 @@
                 th.text-nowrap.col-xs-1.text-center
                   = value
         tbody
-          - current_laboratory.members.order(:grade).each do |member|
+          - current_laboratory.members.each do |member|
             = fields_for "members[]", member do |mr|
               tr
                 .row

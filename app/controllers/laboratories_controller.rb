@@ -24,7 +24,11 @@ class LaboratoriesController < ApplicationController
 
   def set_lab
     if params[:name] == current_laboratory.name
-      @lab = Laboratory.find_by(name: params[:name] )
+      if action_name == "show"
+        @lab = Laboratory.includes(members: :logs).find_by(name: params[:name])
+      else
+        @lab = Laboratory.includes(:members).find_by(name: params[:name])
+      end
     else
       redirect_to root_path, alert: "URLが間違っています"
     end

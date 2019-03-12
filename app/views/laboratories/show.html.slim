@@ -6,7 +6,7 @@ table.table
       th
         | 活動時間
   tbody
-    - @lab.members.order(:grade).each do |member|
+    - @lab.members.each do |member|
       tr
         td
           = member.lastname

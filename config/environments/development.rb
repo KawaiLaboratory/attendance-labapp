@@ -59,4 +59,13 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.after_initialize do
+    Bullet.enable = true # bullet を有効にする
+    Bullet.alert         = true # ブラウザのJavaScriptアラート
+    Bullet.bullet_logger = false # Rails.root/log/bullet.log
+    Bullet.console       = false # ブラウザの console.log の出力先
+    Bullet.rails_logger = false # Railsのログ
+    Bullet.add_footer   = false # 画面の下部に表示
+  end
 end
