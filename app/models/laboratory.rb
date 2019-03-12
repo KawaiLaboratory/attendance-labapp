@@ -11,7 +11,7 @@ class Laboratory < ApplicationRecord
   attribute :displayname , :string  , default: -> { "研究室" }
   attribute :place       , :integer , default: -> { places.keys.index("others") }
   
-  has_many :members, -> { order(:grade) }, dependent: :destroy, inverse_of: :laboratory
+  has_many :members, -> { order(:grade, :id) }, dependent: :destroy, inverse_of: :laboratory
   accepts_nested_attributes_for :members, allow_destroy: true, reject_if: :reject_member
   
   enum place: {
