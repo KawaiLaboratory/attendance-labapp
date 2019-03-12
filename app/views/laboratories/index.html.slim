@@ -5,32 +5,32 @@
         thead
           tr
             .row
-              th.text-nowrap.col-xs-1.text-center
+              th.text-nowrap.col-lg-1.text-center
                 | 名前
               - current_laboratory.members.statuses_i18n.each do |key, value|
-                th.text-nowrap.col-xs-1.text-center
+                th.text-nowrap.col-lg-1.text-center
                   = value
         tbody
           - current_laboratory.members.each do |member|
             = fields_for "members[]", member do |mr|
               tr
                 .row
-                  td.col-xs-1.text-center.name-col
+                  td.col-lg-1.text-center.name-col.text-nowrap
                     = member.lastname
                     | &nbsp;
                     = member.firstname
                   - current_laboratory.members.statuses_i18n.each do |key, value|
-                    td.statuses.col-xs-1
+                    td.statuses.col-lg-1
                       label class="btn btn-attendance #{member.status == key ? 'btn-warning' : 'btn-primary' }"
                         | &nbsp;
                         = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
                         
     .row
       .col-sm-8.col-sm-offset-2
-        = submit_tag "更新", class: "btn btn-info col-xs-3", name: "update_status"
-        = submit_tag "食事", class: "btn btn-info col-xs-3", name: "go_cafeteria"
-        = submit_tag "食事終了", class: "btn btn-info col-xs-3", name: "finished_lanch"
-        = submit_tag "全員帰宅", class: "btn btn-info col-xs-3", name: "go_home"
+        = submit_tag "更新", class: "btn btn-info col-xs-3 btn-lg", name: "update_status"
+        = submit_tag "食事", class: "btn btn-info col-xs-3 btn-lg", name: "go_cafeteria"
+        = submit_tag "食事終了", class: "btn btn-info col-xs-3 btn-lg", name: "finished_lanch"
+        = submit_tag "全員帰宅", class: "btn btn-info col-xs-3 btn-lg", name: "go_home"
 
 - else
   h4
