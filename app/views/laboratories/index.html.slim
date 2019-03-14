@@ -1,7 +1,7 @@
 - if current_laboratory.members.present?
   = form_tag members_path, method: :put do
     .row
-      - 2.times do
+      - current_laboratory.members.each_slice((current_laboratory.members.size.to_f/2).ceil) do |members|
         .col-md-6
           .table-responsive
             table.table.table-bordered.table-condensed
@@ -14,7 +14,7 @@
                       th.text-nowrap.col-lg-1.text-center
                         = value
               tbody
-                - current_laboratory.members.each do |member|
+                - members.each do |member|
                   = fields_for "members[]", member do |mr|
                     tr
                       .row
