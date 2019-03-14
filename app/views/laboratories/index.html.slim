@@ -20,7 +20,7 @@
                       .row
                         td.col-lg-1.text-center.name-col.text-nowrap
                           = member.lastname
-                          | &nbsp;
+                          br
                           = member.firstname
                         - current_laboratory.members.statuses_i18n.each do |key, value|
                           td.statuses.col-lg-1
