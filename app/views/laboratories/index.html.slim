@@ -1,30 +1,33 @@
 - if current_laboratory.members.present?
   = form_tag members_path, method: :put do
-    .table-responsive
-      table.table.table-bordered.table-condensed
-        thead
-          tr
-            .row
-              th.text-nowrap.col-lg-1.text-center
-                | 名前
-              - current_laboratory.members.statuses_i18n.each do |key, value|
-                th.text-nowrap.col-lg-1.text-center
-                  = value
-        tbody
-          - current_laboratory.members.each do |member|
-            = fields_for "members[]", member do |mr|
-              tr
-                .row
-                  td.col-lg-1.text-center.name-col.text-nowrap
-                    = member.lastname
-                    | &nbsp;
-                    = member.firstname
-                  - current_laboratory.members.statuses_i18n.each do |key, value|
-                    td.statuses.col-lg-1
-                      label class="btn btn-attendance #{member.status == key ? 'btn-warning' : 'btn-primary' }"
-                        | &nbsp;
-                        = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
-                        
+    .row
+      - 2.times do
+        .col-md-6
+          .table-responsive
+            table.table.table-bordered.table-condensed
+              thead
+                tr
+                  .row
+                    th.text-nowrap.col-lg-1.text-center
+                      | 名前
+                    - current_laboratory.members.statuses_i18n.each do |key, value|
+                      th.text-nowrap.col-lg-1.text-center
+                        = value
+              tbody
+                - current_laboratory.members.each do |member|
+                  = fields_for "members[]", member do |mr|
+                    tr
+                      .row
+                        td.col-lg-1.text-center.name-col.text-nowrap
+                          = member.lastname
+                          | &nbsp;
+                          = member.firstname
+                        - current_laboratory.members.statuses_i18n.each do |key, value|
+                          td.statuses.col-lg-1
+                            label class="btn btn-attendance #{member.status == key ? 'btn-warning' : 'btn-primary' }"
+                              | &nbsp;
+                              = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
+                            
     .row
       .col-sm-8.col-sm-offset-2
         = submit_tag "更新", class: "btn btn-info col-xs-3 btn-lg", name: "update_status"

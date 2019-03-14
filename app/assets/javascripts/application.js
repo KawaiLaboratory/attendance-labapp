@@ -19,7 +19,12 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function(){
-  setTimeout("location.reload()",120000);
+  $(function(){
+    if($('.container-fluid').length){
+      setTimeout("location.reload()",120000);
+    }
+  });
+  
   $(function(){
     $('.btn_radio').change( function() {
       var nextStatus = $('input[name^="members"]:checked').closest("label");
