@@ -6,19 +6,19 @@
           .table-responsive
             table.table.table-bordered.table-condensed
               thead
-                tr
+                tr.active
                   .row
                     th.text-nowrap.col-sm-1.text-center
                       | 名前
                     - current_laboratory.members.statuses_i18n.each do |key, value|
-                      th.text-nowrap.col-sm-1.text-center
+                      th.text-nowrap.col-sm-1.text-center.bg-secondary
                         = value
               tbody
                 - members.each do |member|
                   = fields_for "members[]", member do |mr|
                     tr
                       .row
-                        td.col-sm-1.text-center.name-col.text-nowrap
+                        td.col-sm-1.text-center.name-col.text-nowrap.success
                           = member.lastname
                           br
                           = member.firstname

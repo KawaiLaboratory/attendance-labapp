@@ -28,8 +28,8 @@ $(document).on('turbolinks:load', function(){
   $(function(){
     $('.btn_radio').change( function() {
       var nextStatus = $('input[name^="members"]:checked').closest("label");
-      $(".btn_radio").closest("label.btn-success").not(nextStatus).removeClass("btn-success").addClass("btn-primary");
-      nextStatus.removeClass("btn-primary").addClass("btn-success");
+      $(".btn_radio").closest("label.btn-primary").not(nextStatus).removeClass("btn-primary").addClass("btn-default");
+      nextStatus.removeClass("btn-default").addClass("btn-primary");
     });
   });
 });
