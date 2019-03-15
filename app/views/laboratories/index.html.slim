@@ -24,7 +24,7 @@
                           = member.firstname
                         - current_laboratory.members.statuses_i18n.each do |key, value|
                           td.statuses.col-sm-1
-                            label class="btn btn-attendance #{member.status == key ? 'btn-warning' : 'btn-default' }"
+                            label class="btn-attendance #{member.status == key ? 'btn-warning' : 'btn-default' }"
                               | &nbsp;
                               = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
                             
