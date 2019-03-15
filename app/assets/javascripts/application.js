@@ -27,9 +27,11 @@ $(document).on('turbolinks:load', function(){
   
   $(function(){
     $('.btn_radio').change( function() {
-      var nextStatus = $('input[name^="members"]:checked').closest("label");
-      $(".btn_radio").closest("label.btn-primary").not(nextStatus).removeClass("btn-primary").addClass("btn-default");
-      nextStatus.removeClass("btn-default").addClass("btn-primary");
+      // var nextStatus = $('input[name^="members"]:checked').closest("label");
+      // $(".btn_radio").closest("label").not(nextStatus).not("").removeClass("btn-primary").addClass("btn-default");
+      // nextStatus.removeClass("btn-default").addClass("btn-primary");
+      $('.fa-circle').remove();
+      $('.btn_radio:checked').closest("label").prepend('<i class="fa fa-circle fa-3x"></i>');
     });
   });
 });

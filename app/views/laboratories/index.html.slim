@@ -23,10 +23,14 @@
                           br
                           = member.firstname
                         - current_laboratory.members.statuses_i18n.each do |key, value|
-                          td.statuses.col-sm-1
-                            label class="btn-attendance #{member.status == key ? 'btn-' + @colors[key.to_sym] : 'btn-default' }"
-                              | &nbsp;
-                              = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
+                          td.statuses.col-sm-1.text-center
+                            - if member.status == key
+                              label class="btn-attendance #{'btn-' + @colors[key.to_sym]}"
+                                = fa_icon "circle 3x"
+                                = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
+                            - else
+                              label class="btn-attendance btn-default"
+                                = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
                             
     .row
       .col-sm-8.col-sm-offset-2
