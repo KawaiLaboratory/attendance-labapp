@@ -3,6 +3,19 @@ class LaboratoriesController < ApplicationController
   before_action :authenticate_laboratory!
   
   def index
+    @colors = {
+      office:     "warning",
+      experiment: "warning",
+      machining:  "warning",
+      ogigaoka:   "warning",
+      cafeteria:  "danger",
+      classwork:  "success",
+      offcampus:  "success",
+      athome:     "primary",
+      jobhunt:    "primary",
+      absence:    "primary",
+      homecaming: "primary",
+    }
   end
 
   def show

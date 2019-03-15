@@ -6,25 +6,25 @@
           .table-responsive
             table.table.table-bordered.table-condensed
               thead
-                tr.active
+                tr
                   .row
                     th.text-nowrap.col-sm-1.text-center
                       | 名前
                     - current_laboratory.members.statuses_i18n.each do |key, value|
-                      th.text-nowrap.col-sm-1.text-center.bg-secondary
+                      th class="text-nowrap col-sm-1 text-center bg-#{@colors[key.to_sym]}"
                         = value
               tbody
                 - members.each do |member|
                   = fields_for "members[]", member do |mr|
                     tr
                       .row
-                        td.col-sm-1.text-center.name-col.text-nowrap.success
+                        td.col-sm-1.text-center.name-col.text-nowrap.active
                           = member.lastname
                           br
                           = member.firstname
                         - current_laboratory.members.statuses_i18n.each do |key, value|
                           td.statuses.col-sm-1
-                            label class="btn-attendance #{member.status == key ? 'btn-warning' : 'btn-default' }"
+                            label class="btn-attendance #{member.status == key ? 'btn-' + @colors[key.to_sym] : 'btn-default' }"
                               | &nbsp;
                               = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
                             
