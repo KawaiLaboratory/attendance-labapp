@@ -7,7 +7,7 @@ class LaboratoriesController < ApplicationController
       office:     "warning",
       experiment: "warning",
       machining:  "warning",
-      ogigaoka:   "warning",
+      ogigaoka:   "info",
       cafeteria:  "danger",
       classwork:  "success",
       offcampus:  "success",

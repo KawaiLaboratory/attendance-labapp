@@ -4,7 +4,7 @@
       - current_laboratory.members.each_slice((current_laboratory.members.size.to_f/2).ceil) do |members|
         .col-md-6
           .table-responsive
-            table.table.table-bordered.table-condensed
+            table.table.table-bordered.table-condensed.table-striped
               thead
                 tr
                   .row
@@ -18,7 +18,7 @@
                   = fields_for "members[]", member do |mr|
                     tr
                       .row
-                        td.col-sm-1.text-center.name-col.text-nowrap.active
+                        td.col-sm-1.text-center.name-col.text-nowrap
                           = member.lastname
                           br
                           = member.firstname
@@ -29,7 +29,7 @@
                                 = fa_icon "circle 3x"
                                 = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
                             - else
-                              label class="btn-attendance btn-default"
+                              label class="btn-attendance btn-link"
                                 = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
                             
     .row
