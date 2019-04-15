@@ -19,6 +19,8 @@ class LaboratoriesController < ApplicationController
   end
 
   def show
+    @period = (Date.current-5.days)..(Date.current)
+    @range  = Date.current.beginning_of_day..Date.current.end_of_day
   end
 
   def edit

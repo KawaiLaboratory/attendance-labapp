@@ -42,8 +42,12 @@ class Member < ApplicationRecord
     homecaming: 10,
   }
   
-  def active_times
-    logs.where(status: 0..3).sum(:total_time)
+  def active_logs
+    logs.where(status: 0..3)
+  end
+  
+  def active_logs_at_day(range)
+    logs.where(created_at: range, status: 0..3)
   end
   
   def change_status(next_status, now)

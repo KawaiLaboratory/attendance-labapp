@@ -1,10 +1,13 @@
-table.table
+table.table.table-bordered
   thead
     tr
       th
         | 名前
+      - @period.each do |date|
+        th
+          = date.strftime('%-m/%-d')
       th
-        | 活動時間
+        | 累計[h]
   tbody
     - @lab.members.each do |member|
       tr
@@ -12,9 +15,11 @@ table.table
           = member.lastname
           | &nbsp;
           = member.firstname
-        td
+        - @period.each do |date|
+          td.text-center
+            = member.active_logs_at_day(@range).sum(:total_time)/360
+        td.text-center
           - if member.logs.blank?
             | 0
           - else
-            = member.active_times/60
-          | [min]
+            = member.active_logs.sum(:total_time)/360
