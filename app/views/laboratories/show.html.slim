@@ -4,9 +4,9 @@ table.table.table-bordered
       th
         | 名前
       - @period.each do |date|
-        th
+        th.text-center
           = date.strftime('%-m/%-d')
-      th
+      th.text-center
         | 累計[h]
   tbody
     - @lab.members.each do |member|
@@ -17,9 +17,9 @@ table.table.table-bordered
           = member.firstname
         - @period.each do |date|
           td.text-center
-            = (member.active_logs_at_day(date.beginning_of_day..date.end_of_day).sum(:total_time)/360.0).round(1)
+            = (member.active_logs_at_day(date.beginning_of_day..date.end_of_day).sum(:total_time)/3600.0).round(1)
         td.text-center
           - if member.logs.blank?
             | 0.0
           - else
-            = (member.active_logs.sum(:total_time)/360.0).round(1)
+            = (member.active_logs.sum(:total_time)/3600.0).round(1)
