@@ -20,6 +20,6 @@ table.table.table-bordered
             = (member.active_logs_at_day(date.beginning_of_day..date.end_of_day).sum(:total_time)/360.0).round(1)
         td.text-center
           - if member.logs.blank?
-            | 0
+            | 0.0
           - else
             = (member.active_logs.sum(:total_time)/360.0).round(1)
