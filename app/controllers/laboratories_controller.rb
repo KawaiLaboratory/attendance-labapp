@@ -19,7 +19,18 @@ class LaboratoriesController < ApplicationController
   end
 
   def show
-    @period = (Date.current-5.days)..(Date.current)
+    respond_to do |format|
+      format.html do
+        @period = (Date.current-6.days)..(Date.current)
+      end
+      
+      format.csv do
+        @member = @lab.members.find_by(id: params[:member_id])
+        @period = (Date.current-40.days)..(Date.current)
+        filename = "#{@member.lastname}_LOGS"
+        headers["Content-Disposition"] = "attachment; filename=\"#{filename}.csv\""
+      end
+    end
   end
 
   def edit

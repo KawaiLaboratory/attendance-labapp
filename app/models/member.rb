@@ -2,6 +2,9 @@ class Member < ApplicationRecord
   has_many   :logs
   belongs_to :laboratory
   
+  ACTIVE_RANGE = 0..4 #食事も含む
+  
+  
   validates :lastname     , presence: true
   validates :firstname    , presence: true
   validates :changed_at   , presence: true
@@ -43,13 +46,17 @@ class Member < ApplicationRecord
   }
   
   def active_logs
-    logs.where(status: 0..3)
+    logs.where(status: ACTIVE_RANGE)
   end
   
   def active_logs_at_day(range)
-    logs.where(created_at: range, status: 0..3)
+    logs.where(created_at: range).where(status: ACTIVE_RANGE)
   end
   
+  def each_logs_at_day(range, status)
+    logs.where(created_at: range).where(status: status)
+  end
+
   def change_status(next_status, now)
     logs.build(
       total_time: (now.to_i - changed_at.to_i),

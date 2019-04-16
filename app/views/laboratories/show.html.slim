@@ -1,5 +1,5 @@
 .table-responsive
-  table.table.table-bordered
+  table.table.table-bordered.table-striped
     thead
       tr
         th
@@ -13,9 +13,7 @@
       - @lab.members.each do |member|
         tr
           td
-            = member.lastname
-            | &nbsp;
-            = member.firstname
+            = link_to "#{member.lastname} #{member.firstname}", laboratory_path(current_laboratory, member_id: member.id, format: :csv)
           - @period.each do |date|
             td.text-center
               = (member.active_logs_at_day(date.beginning_of_day..date.end_of_day).sum(:total_time)/3600.0).round(1)
@@ -26,6 +24,10 @@
               = (member.active_logs.sum(:total_time)/3600.0).round(1)
             
 .panel.panel-default
-  .panel-heading
-    h5
-      | 概算量なので気にしないでください
+  .panel-heading.text-center
+    p
+      | それぞれの名前をクリックすると過去40日分の大まかなログがダウンロードできます
+      br
+      | 容量の問題でログを消す場合もあるのでこまめに確認してください
+    b
+      | あくまで目安です
