@@ -19,8 +19,9 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function(){
+  var current_hour = new Date().getHours();
   $(function(){
-    if($('.container-fluid').length){
+    if($('.container-fluid').length && current_hour > 10 && current_hour < 22){
       setTimeout("location.reload()",120000);
     }
   });
