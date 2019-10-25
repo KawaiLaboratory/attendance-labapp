@@ -21,7 +21,7 @@
       .col-sm-4
         .form-group
           = f.label :go_cafeteria
-          = f.select :go_cafeteria, [["行く", true], ["行かない", false]], {}, class: 'form-control'
+          = f.select :go_cafeteria, [["食堂", true], ["研究室", false]], {}, class: 'form-control'
     .pull-right
       = link_to_remove_association "メンバーを削除", f, class: "btn btn-danger", data: {confirm: '削除してよろしいですか？'}
     .clearfix

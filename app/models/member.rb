@@ -10,6 +10,7 @@ class Member < ApplicationRecord
   validates :changed_at   , presence: true
   validates :status       , presence: true
   validates :grade        , presence: true
+  validates :class_number , presence: true
   validates :go_cafeteria , inclusion: { in: [true, false] }
   
   attribute :lastname     , :string  , default: -> { "" }
@@ -17,6 +18,7 @@ class Member < ApplicationRecord
   attribute :changed_at   , :datetime, default: -> { DateTime.current }
   attribute :status       , :integer , default: -> { statuses.keys.index("athome") }
   attribute :grade        , :integer , default: -> { grades.keys.index("others") }
+  attribute :class_number , :integer , default: -> { 0 }
   attribute :go_cafeteria , :boolean , default: -> { true }
   
   enum grade: {

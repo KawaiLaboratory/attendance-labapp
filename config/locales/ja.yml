@@ -34,3 +34,28 @@ ja:
         building61: 61号館
         building65: 65号館
         others:     その他
+  activerecord:
+    models:
+      laboratory: 研究室
+      member:     メンバー
+      log:        活動記録
+    attributes:
+      laboratory:
+        id:           ID
+        name:         識別名
+        displayname:  研究室名
+        place:        所在地
+        email:        メールアドレス
+        password:     パスワード
+      member:
+        id: ID
+        firstname:    名
+        lastname:     姓
+        grade:        クラス
+        class_number: クラス番号
+        status:       現在地
+        go_cafeteria: 昼食時の居場所
+      log:
+        id:         ID
+        total_time: 活動時間
+        status:     活動内容
