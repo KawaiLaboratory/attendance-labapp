@@ -1,4 +1,4 @@
-= form_for @lab do |f|
+= form_with model: @lab do |f|
   / とりあえずパスワード更新はできない処理で行く
   /.form-group
     = f.label :password
@@ -19,7 +19,7 @@
       .col-sm-6
         .form-group
           = f.label :place
-          = f.select :place, Laboratory.places_i18n.map { |k,v| [v ,k]}, {}, class: 'form-control'
+          = f.select :place, Laboratory.places_i18n.map { |k,v| [v ,k] }, {}, class: 'form-control'
 
   .panel.panel-success
     .panel-heading

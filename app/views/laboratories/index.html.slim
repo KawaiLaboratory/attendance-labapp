@@ -1,5 +1,5 @@
 - if current_laboratory.members.present?
-  = form_tag members_path, method: :put do
+  = form_with url: members_path, method: :put do
     .row
       - current_laboratory.members.each_slice((current_laboratory.members.size.to_f/2).ceil) do |members|
         .col-md-6

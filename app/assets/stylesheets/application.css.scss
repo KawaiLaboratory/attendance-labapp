@@ -35,7 +35,7 @@
   text-decoration: none;
 }
 
-.table-condensed > tbody > tr{
+.table > tbody > tr{
   td.statuses{
     height: 44px;
     padding: 0;
@@ -44,4 +44,18 @@
 
 .name-col{
   font-size: 18px;
+}
+
+select.sp-select{
+  font-size: 18px;
+  height: 50px; //自動調整しような(自戒)
+  border: none;
+}
+
+.sp-col-name{
+  width: 50%;
+}
+
+.sp-col-status{
+  width: 50%;
 }
