@@ -24,11 +24,15 @@ class Member < ApplicationRecord
     doctor:  1,
     m_2nd:   2,
     m_1st:   3,
-    b_4th:   4,
-    b_3rd:   5,
-    b_2nd:   6,
-    b_1st:   7,
-    others:  8
+    b_4th_1: 4,
+    b_4th_2: 5,
+    b_3rd_1: 6,
+    b_3rd_2: 7,
+    b_2nd_1: 8,
+    b_2nd_2: 9,
+    b_1st_1: 10,
+    b_1st_2: 11,
+    others:  12
   }
   
   enum status: {

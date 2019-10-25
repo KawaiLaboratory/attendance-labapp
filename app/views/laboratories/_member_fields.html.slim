@@ -10,11 +10,15 @@
           = f.label :firstname
           = f.text_field :firstname, class: 'form-control'
     .row
-      .col-sm-6
+      .col-sm-4
         .form-group
           = f.label :grade
           = f.select :grade, Member.grades_i18n.map { |k,v| [v ,k]}, {}, class: 'form-control'
-      .col-sm-6
+      .col-sm-4
+        .form-group
+          = f.label :class_number
+          = f.number_field :class_number, class: 'form-control'
+      .col-sm-4
         .form-group
           = f.label :go_cafeteria
           = f.select :go_cafeteria, [["行く", true], ["行かない", false]], {}, class: 'form-control'

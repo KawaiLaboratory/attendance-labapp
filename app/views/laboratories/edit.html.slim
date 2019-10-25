@@ -19,6 +19,7 @@
         .form-group
           = f.label :place
           = f.select :place, Laboratory.places_i18n.map { |k,v| [v ,k]}, {}, class: 'form-control'
+
   .panel.panel-success
     .panel-heading
       h4

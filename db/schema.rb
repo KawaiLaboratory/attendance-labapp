@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_10_015843) do
+ActiveRecord::Schema.define(version: 2019_10_25_013740) do
 
   create_table "laboratories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_03_10_015843) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
+    t.datetime "last_updated_at", default: "2019-10-25 02:02:05", null: false
     t.index ["email"], name: "index_laboratories_on_email", unique: true
     t.index ["name"], name: "index_laboratories_on_name", unique: true
   end
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_03_10_015843) do
     t.bigint "laboratory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "class_number", default: 0, null: false
     t.index ["laboratory_id"], name: "index_members_on_laboratory_id"
   end
 
