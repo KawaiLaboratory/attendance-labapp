@@ -50,12 +50,13 @@ select.sp-select{
   font-size: 18px;
   height: 50px; //自動調整しような(自戒)
   border: none;
+  border-radius: 0;
 }
 
 .sp-col-name{
-  width: 50%;
+  width: 60%;
 }
 
 .sp-col-status{
-  width: 50%;
+  width: 40%;
 }
