@@ -1,4 +1,6 @@
 class MembersController < ApplicationController
+  before_action :authenticate_laboratory!
+
   def update
     changed_at = DateTime.current
     # メソッド切ったり色々する

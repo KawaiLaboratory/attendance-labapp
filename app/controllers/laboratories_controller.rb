@@ -1,6 +1,6 @@
 class LaboratoriesController < ApplicationController
-  before_action :set_lab, only: [:show, :edit, :update]
   before_action :authenticate_laboratory!
+  before_action :set_lab
   
   def index
     @colors = {
@@ -37,7 +37,6 @@ class LaboratoriesController < ApplicationController
   end
 
   def update
-    #if check_pass && @lab.update(lab_params)
     if @lab.update(lab_params)
       redirect_to root_path, notice: "更新しました"
     else
@@ -48,14 +47,10 @@ class LaboratoriesController < ApplicationController
   private
 
   def set_lab
-    if params[:name] == current_laboratory.name
-      if action_name == "show"
-        @lab = Laboratory.includes(members: :logs).find_by(name: params[:name])
-      else
-        @lab = Laboratory.includes(:members).find_by(name: params[:name])
-      end
+    if action_name == "show"
+      @lab = Laboratory.includes(members: :logs).find_by(name: current_laboratory.name)
     else
-      redirect_to root_path, alert: "URLが間違っています"
+      @lab = Laboratory.includes(:members).find_by(name: current_laboratory.name)
     end
   end
   
