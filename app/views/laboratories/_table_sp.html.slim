@@ -1,0 +1,18 @@
+.table-responsive
+    table.table.table-condensed.table-bordered.table-striped
+      thead
+        tr
+          th.text-nowrap.col-sm-6.text-center.sp-col-name
+            | 名前
+          th.text-nowrap.col-sm-6.text-center.sp-col-status
+            | 現在地
+      tbody
+        - l_members.each do |member|
+          tr
+            td.text-center.name-col.text-nowrap
+              = member.lastname
+              br
+              = member.firstname
+            td class="btn-#{@colors[member.status.to_sym]} text-center disabled"
+              = fields_for "members[]", member do |mr|
+                = mr.select :status, current_laboratory.members.statuses_i18n.map{|k, v| [v, k]}, {}, {class: 'form-control sp-select'}

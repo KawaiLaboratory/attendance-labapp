@@ -1,0 +1,31 @@
+.row
+  - l_members.each_slice((l_members.size.to_f/2).ceil) do |members|
+    .col-md-6
+      .table-responsive
+        table.table.table-bordered.table-condensed.table-striped
+          thead
+            tr
+              .row
+                th.text-nowrap.col-sm-1.text-center
+                  | 名前
+                - l_members.statuses_i18n.each do |key, value|
+                  th class="text-nowrap col-sm-1 text-center bg-#{@colors[key.to_sym]}"
+                    = value
+          tbody
+            - members.each do |member|
+              = fields_for "members[]", member do |mr|
+                tr
+                  .row
+                    td.col-sm-1.text-center.name-col.text-nowrap
+                      = member.lastname
+                      br
+                      = member.firstname
+                    - l_members.statuses_i18n.each do |key, value|
+                      td.statuses.col-sm-1.text-center
+                        - if member.status == key
+                          label class="btn-attendance #{'btn-' + @colors[key.to_sym]}"
+                            = fa_icon "circle 3x"
+                            = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
+                        - else
+                          label class="btn-attendance btn-link"
+                            = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"

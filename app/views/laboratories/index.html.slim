@@ -1,36 +1,9 @@
 - if current_laboratory.members.present?
   = form_with url: members_path, method: :put do
-    .row
-      - current_laboratory.members.each_slice((current_laboratory.members.size.to_f/2).ceil) do |members|
-        .col-md-6
-          .table-responsive
-            table.table.table-bordered.table-condensed.table-striped
-              thead
-                tr
-                  .row
-                    th.text-nowrap.col-sm-1.text-center
-                      | 名前
-                    - current_laboratory.members.statuses_i18n.each do |key, value|
-                      th class="text-nowrap col-sm-1 text-center bg-#{@colors[key.to_sym]}"
-                        = value
-              tbody
-                - members.each do |member|
-                  = fields_for "members[]", member do |mr|
-                    tr
-                      .row
-                        td.col-sm-1.text-center.name-col.text-nowrap
-                          = member.lastname
-                          br
-                          = member.firstname
-                        - current_laboratory.members.statuses_i18n.each do |key, value|
-                          td.statuses.col-sm-1.text-center
-                            - if member.status == key
-                              label class="btn-attendance #{'btn-' + @colors[key.to_sym]}"
-                                = fa_icon "circle 3x"
-                                = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
-                            - else
-                              label class="btn-attendance btn-link"
-                                = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
+    - if request.smart_phone? && !request.tablet?
+        = render partial: "table_sp", locals: { l_members: current_laboratory.members }
+    - else
+        = render partial: "table_pc", locals: { l_members: current_laboratory.members }
     .row
       .col-sm-3
         = submit_tag "更新", class: "btn btn-primary btn-lg btn-block", name: "update_status"
