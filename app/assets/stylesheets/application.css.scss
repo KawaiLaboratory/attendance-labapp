@@ -16,6 +16,21 @@
 @import "bootstrap-sprockets";
 @import "font-awesome";
 
+html{
+  position: relative;
+  min-height: 100%;
+}
+
+body{
+  margin-bottom: 55px;
+}
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 .btn_radio{
   display: none
 }
