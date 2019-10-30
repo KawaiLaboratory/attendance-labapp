@@ -22,7 +22,7 @@ $(document).on('turbolinks:load', function(){
   $(function(){
     setInterval(function(){
       var current_hour = new Date().getHours();
-      if($('.container-fluid').length && current_hour > 9 && current_hour < 21){
+      if($('.container-fluid').length && current_hour > 8 && current_hour < 21){
         location.reload();
       }
     },2*60*1000);
