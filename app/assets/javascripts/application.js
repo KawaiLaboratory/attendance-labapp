@@ -21,8 +21,8 @@
 $(document).on('turbolinks:load', function(){
   $(function(){
     setInterval(function(){
-      var current_hour = new Date().getHours();
-      if($('.container-fluid').length && current_hour > 8 && current_hour < 21){
+      var today        = new Date();
+      if($('.container-fluid').length && today.getHours()> 8 && today.getHours() < 21 && today.getDay() != 0){
         location.reload();
       }
     },2*60*1000);
