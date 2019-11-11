@@ -1,4 +1,8 @@
 ja:
+  date:
+    formats:
+       full_date: "%Y年%m月%d日 (%a) %H:%M"
+       short: "%m/%d (%a)"
   enums:
     member:
       status:

@@ -5,8 +5,15 @@
         th
           | 名前
         - @period.each do |date|
-          th.text-center
-            = date.strftime('%-m/%-d')
+          - if date.wday == 0
+            th.text-center.bg-danger
+              = l(date, format: :short)
+          - elsif date.wday == 6
+            th.text-center.bg-info
+              = l(date, format: :short)
+          - else
+            th.text-center
+              = l(date, format: :short)
         th.text-center
           | 累計[h]
     tbody
