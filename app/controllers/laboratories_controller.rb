@@ -44,6 +44,10 @@ class LaboratoriesController < ApplicationController
     end
   end
   
+  def ajax
+    render json: {date: @lab.member_updated_at.strftime("%Y%m%d%H%M%S")}
+  end
+  
   private
 
   def set_lab

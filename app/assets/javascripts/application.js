@@ -20,12 +20,24 @@
 
 $(document).on('turbolinks:load', function(){
   $(function(){
-    setInterval(function(){
-      var today        = new Date();
-      if($('.container-fluid').length && today.getHours()> 8 && today.getHours() < 21 && today.getDay() != 0){
-        location.reload();
-      }
-    },2*60*1000);
+    var today = new Date();
+    if($('.container-fluid').length && today.getHours()> 8 && today.getHours() < 21 && today.getDay() != 0){
+      var last_updated_at = $(".update")[0].id;
+      setInterval(function(){
+        $.ajax({
+          url: "/ajax",
+          type: "GET",
+        })
+        .done(function(response){
+          if(last_updated_at != response["date"]){
+             location.reload();
+          }
+        })
+        .fail(function(){
+          alert('ERROR! Please Reload!');
+        });
+      },5*1000);
+    }
   });
   
   $(function(){

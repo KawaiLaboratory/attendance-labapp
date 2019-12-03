@@ -26,6 +26,7 @@ class MembersController < ApplicationController
         end
       end
     end
+    current_laboratory.update(member_updated_at: changed_at)
     redirect_to root_path
   end
   
