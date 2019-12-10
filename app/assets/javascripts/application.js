@@ -34,9 +34,9 @@ $(document).on('turbolinks:load', function(){
           }
         })
         .fail(function(){
-          alert('ERROR! Please Reload!');
+          location.reload();
         });
-      },5*1000);
+      },3*1000); // 3秒
     }
   });
   
