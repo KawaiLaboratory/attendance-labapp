@@ -3,7 +3,7 @@ class LaboratoriesController < ApplicationController
   before_action :set_lab
   
   def index
-    @colors = {
+          @colors = {
       office:     "warning",
       experiment: "warning",
       machining:  "warning",

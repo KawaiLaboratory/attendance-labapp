@@ -8,9 +8,9 @@
               .row
                 th.text-nowrap.col-sm-1.text-center
                   | 名前
-                - l_members.statuses_i18n.each do |key, value|
-                  th class="text-nowrap col-sm-1 text-center bg-#{@colors[key.to_sym]}"
-                    = value
+                - @lab.statuses.each do |status|
+                  th class="text-nowrap col-sm-1 text-center bg-#{status.color}"
+                    = status.name
           tbody
             - members.each do |member|
               = fields_for "members[]", member do |mr|

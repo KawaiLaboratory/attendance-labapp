@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_020653) do
+ActiveRecord::Schema.define(version: 2019_12_13_043518) do
 
   create_table "laboratories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 2019_12_03_020653) do
     t.index ["laboratory_id"], name: "index_members_on_laboratory_id"
   end
 
+  create_table "statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "color", default: 0, null: false
+    t.string "name", null: false
+    t.boolean "active", default: false, null: false
+    t.bigint "laboratory_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["laboratory_id"], name: "index_statuses_on_laboratory_id"
+  end
+
   add_foreign_key "logs", "members"
   add_foreign_key "members", "laboratories"
+  add_foreign_key "statuses", "laboratories"
 end
