@@ -5,17 +5,17 @@ class MembersController < ApplicationController
     changed_at = DateTime.current
     # メソッド切ったり色々する
     if params[:go_cafeteria]
-      Member.where(id: member_params.keys).where(status: 0..2).each do | member |
+      Member.where(status: 0..2).each do | member |
         if member.go_cafeteria?
           member.change_status(Member.statuses[:cafeteria], changed_at)
         end
       end
     elsif params[:finished_lanch]
-      Member.where(id: member_params.keys).cafeteria.each do | member |
+      Member.cafeteria.each do | member |
         member.change_status(Member.statuses[:office], changed_at)
       end
     elsif params[:go_home]
-      Member.where(id: member_params.keys).where(status: 0..6).each do | member |
+      Member.where(status: 0..6).each do | member |
         member.change_status(Member.statuses[:athome], changed_at)
       end
     else

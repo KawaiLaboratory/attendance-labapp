@@ -16,27 +16,49 @@
 //= require cocoon
 //= require bootstrap
 //= require turbolinks
+//= require jquery_ujs
 //= require_tree .
 
 $(document).on('turbolinks:load', function(){
   $(function(){
     var today = new Date();
-    if($('.container-fluid').length && today.getHours()> 8 && today.getHours() < 21 && today.getDay() != 0){
+    var started_at = 9;
+    var expired_at = 21;
+
+    if($('.container-fluid').length && today.getDay() != 0){
       var last_updated_at = $(".update")[0].id;
-      setInterval(function(){
-        $.ajax({
-          url: "/ajax",
-          type: "GET",
-        })
-        .done(function(response){
-          if(last_updated_at != response["date"]){
-             location.reload();
-          }
-        })
-        .fail(function(){
-          location.reload();
-        });
-      },3*1000); // 3秒
+      if(today.getHours() >= started_at && today.getHours() < expired_at){
+        setInterval(function(){
+          $.ajax({
+            url: "/ajax",
+            type: "GET",
+          })
+          .done(function(response){
+            if(last_updated_at != response["date"]){
+              location.reload();
+            }
+          })
+          .fail(function(){
+            location.reload();
+          });
+        },3*1000); // 3秒
+      }else if(today.getHours() >= expired_at){
+        var labels = $(".fa-circle").closest("label")
+        if(labels.hasClass("btn-warning") || labels.hasClass("btn-info") || labels.hasClass("btn-danger")){
+          $.ajax({
+            url: "/members",
+            type: "PUT",
+            data: {"go_home": "全員帰宅"},
+            dataType: 'json'
+          })
+          .done(function(response){
+            location.reload();
+          })
+          .fail(function(){
+            location.reload(); //たまにバグってそう
+          });
+        }
+      }
     }
   });
   
