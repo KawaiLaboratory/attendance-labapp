@@ -21,44 +21,60 @@
 
 $(document).on('turbolinks:load', function(){
   $(function(){
-    var today = new Date();
-    var started_at = 9;
-    var expired_at = 21;
-
-    if($('.container-fluid').length && today.getDay() != 0){
-      var last_updated_at = $(".update")[0].id;
-      if(today.getHours() >= started_at && today.getHours() < expired_at){
-        setInterval(function(){
-          $.ajax({
-            url: "/ajax",
-            type: "GET",
-          })
-          .done(function(response){
-            if(last_updated_at != response["date"]){
-              location.reload();
+    var ajax_reload = function(){
+          var today = new Date();
+          var h = today.getHours();
+          var last_updated_at = $(".update")[0].id;
+          var started_at = 9;
+          var expired_at = 12;
+          
+          if(today.getDay() != 0){
+            if(started_at <= h && h < expired_at){
+              $.ajax({
+                url: "/ajax",
+                type: "GET",
+              })
+              .done(function(response){
+                console.log("success");
+                if(last_updated_at != response["date"]){
+                  location.reload();
+                }
+              })
+              .fail(function(){
+                console.log("failed");
+              });
+            }else if(expired_at <= h){
+              $.ajax({
+                url: "/ajax",
+                type: "GET",
+              })
+              .done(function(response){
+                if(Number(response["date"].substr(8, 2)) < expired_at){
+                  $.ajax({
+                    url: "/members",
+                    type: "PUT",
+                    data: {"go_home": "全員帰宅"},
+                    dataType: 'json'
+                  })
+                  .done(function(){
+                    location.reload();
+                  })
+                  .fail(function(){
+                    location.reload();
+                  });
+                }
+              })
+              .fail(function(){
+                console.log("failed!");
+              });
             }
-          })
-          .fail(function(){
-            location.reload();
-          });
-        },3*1000); // 3秒
-      }else if(today.getHours() >= expired_at){
-        var labels = $(".fa-circle").closest("label")
-        if(labels.hasClass("btn-warning") || labels.hasClass("btn-info") || labels.hasClass("btn-danger")){
-          $.ajax({
-            url: "/members",
-            type: "PUT",
-            data: {"go_home": "全員帰宅"},
-            dataType: 'json'
-          })
-          .done(function(response){
-            location.reload();
-          })
-          .fail(function(){
-            location.reload(); //たまにバグってそう
-          });
-        }
-      }
+          }
+          console.log(today);
+          setTimeout(function() {ajax_reload()}, 3*1000);
+        };
+
+    if($('.container-fluid').length){
+      ajax_reload();
     }
   });
   
