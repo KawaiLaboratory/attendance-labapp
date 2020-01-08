@@ -26,7 +26,7 @@ $(document).on('turbolinks:load', function(){
           var h = today.getHours();
           var last_updated_at = $(".update")[0].id;
           var started_at = 9;
-          var expired_at = 12;
+          var expired_at = 21;
           
           if(today.getDay() != 0){
             if(started_at <= h && h < expired_at){
