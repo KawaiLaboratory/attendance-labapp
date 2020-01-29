@@ -30,9 +30,11 @@
             - else
               = (member.active_logs.sum(:total_time)/3600.0).round(1)
             
-
-= column_chart (1..12).map{ |i| {name: "#{i}月", data: Log.active_logs_through_year(@lab.members.ids, i)}}, stacked: true
-
+- if @lab.members.size > 16
+  - @lab.members.each_slice((@lab.members.size.to_f/2).ceil) do |members|
+    = column_chart (1..12).map{ |i| {name: "#{i}月", data: Log.active_logs_through_year(members.ids, i)}}, stacked: true
+- else 
+ = column_chart (1..12).map{ |i| {name: "#{i}月", data: Log.active_logs_through_year(@lab.members.ids, i)}}, stacked: true
 .panel.panel-default
   .panel-heading.text-center
     p
