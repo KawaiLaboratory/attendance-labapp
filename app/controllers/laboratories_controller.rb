@@ -22,6 +22,7 @@ class LaboratoriesController < ApplicationController
     respond_to do |format|
       format.html do
         @period = (Date.current-6.days)..(Date.current)
+        @year_range = (Date.current.beginning_of_financial_year)..(Date.current.end_of_financial_year)
       end
       
       format.csv do
