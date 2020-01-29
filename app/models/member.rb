@@ -73,10 +73,11 @@ class Member < ApplicationRecord
   def self.active_logs_through_year(month, members)
     member_log = []
     if month < 4
-      year = Date.current.financial_year-1
-    else
       year = Date.current.financial_year
+    else
+      year = Date.current.financial_year-1
     end
+    
     date = Date.new(year, month)
     members.each do |member|
       tmp_log = member.logs.where(created_at: date.beginning_of_month..date.end_of_month).where(status: ACTIVE_RANGE).group("member_id").sum(:total_time).sort
