@@ -76,7 +76,7 @@ class Member < ApplicationRecord
     members.each do |member|
       tmp_log = member.logs.where(created_at: date.beginning_of_month..date.end_of_month).where(status: ACTIVE_RANGE).group("member_id").sum(:total_time).sort
       if tmp_log.blank?
-        tmp_log = [member.id, 0]
+        tmp_log = [[member.id, 0]]
       end
       tmp_log.each do |k, v|
         member_log << [Member.find(k).lastname, (v/3600.0).round(1)]
