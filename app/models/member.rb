@@ -70,4 +70,12 @@ class Member < ApplicationRecord
     )
     update(status: next_status, changed_at: now)
   end
+  
+  def active_logs_through_year(range)
+    tmp_log = logs.where(created_at: range).where(status: ACTIVE_RANGE).group("extract(year from created_at)").group("extract(month from created_at)").sum(:total_time)
+    tmp_log.each do |k, v|
+      tmp_log.store(k, (v/3600.0).round(1))
+    end
+    return tmp_log
+  end
 end
