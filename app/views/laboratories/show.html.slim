@@ -30,7 +30,7 @@
             - else
               = (member.active_logs.sum(:total_time)/3600.0).round(1)
             
-= line_chart @lab.members.map{ |member| {name: member.lastname, data: member.active_logs_at_day(@year_range).group("extract(year from created_at)").group("extract(month from created_at)").sum(:total_time).sort }}
+= bar_chart @lab.members.map{ |member| {name: member.lastname, data: member.active_logs_at_day(@year_range).group("extract(year from created_at)").group("extract(month from created_at)").sum(:total_time).sort }}
 
 .panel.panel-default
   .panel-heading.text-center
