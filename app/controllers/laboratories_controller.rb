@@ -19,14 +19,16 @@ class LaboratoriesController < ApplicationController
   end
 
   def show
+    date = Date.current
     respond_to do |format|
       format.html do
-        @period = (Date.current-6.days)..(Date.current)
+        @period = (date-6.days..date)
+        @f_year = Array.new(12) { |n| date.beginning_of_financial_year + n.month }
       end
       
       format.csv do
         @member = @lab.members.find_by(id: params[:member_id])
-        @period = (Date.current-100.days)..(Date.current)
+        @period = (date-100.days..date)
         filename = "#{@member.lastname}_logs"
         headers["Content-Disposition"] = "attachment; filename=\"#{filename}.csv\""
       end
