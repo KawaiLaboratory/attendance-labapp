@@ -2,7 +2,7 @@ require "csv"
 require "nkf"
 
 today = Date.current
-range = today.beginning_of_financial_year..today.end_of_financial_year
+range = today.beginning_of_financial_year-1.month..today.end_of_financial_year-1.month
 id_col = []
 name_col = []
 
