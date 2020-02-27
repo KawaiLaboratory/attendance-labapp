@@ -38,6 +38,19 @@ ja:
         building61: 61号館
         building65: 65号館
         others:     その他
+    log:
+      status:
+        office: 在室
+        experiment: 実験室
+        machining: 加工室
+        cafeteria: 昼食
+        classwork: 授業
+        ogigaoka: 扇が丘
+        offcampus: 学外
+        athome: 帰宅
+        jobhunt: 就活
+        absence: 病欠
+        homecaming: 帰省
   activerecord:
     models:
       laboratory: 研究室

@@ -50,6 +50,17 @@ class LaboratoriesController < ApplicationController
     render json: {date: @lab.member_updated_at.strftime("%Y%m%d%H%M%S")}
   end
   
+  def all_logs
+    date = Date.current
+    respond_to do |format|
+      format.csv do
+        @period = date.beginning_of_financial_year..date.end_of_financial_year
+        filename = "all_logs_at_#{date.financial_year}"
+        headers["Content-Disposition"] = "attachment; filename=\"#{filename}.csv\""
+      end
+    end
+  end
+  
   private
 
   def set_lab

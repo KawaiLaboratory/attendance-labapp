@@ -20,7 +20,7 @@
       - @lab.members.each do |member|
         tr
           td
-            = link_to "#{member.lastname} #{member.firstname}", laboratory_path(current_laboratory, member_id: member.id, format: :csv)
+            = link_to "#{member.lastname} #{member.firstname}", laboratory_path(@lab, member_id: member.id, format: :csv)
           - @period.each do |date|
             td.text-center
               = (member.active_logs_at_day(date.beginning_of_day..date.end_of_day).sum(:total_time)/3600.0).round(1)
@@ -44,5 +44,4 @@ h3
       | それぞれの名前をクリックすると過去100日分の大まかなログがダウンロードできます
       br
       | 容量の問題でログを消す場合もあるのでこまめに確認してください
-    b
-      | あくまで目安です
+    = link_to "全ログダウンロード", laboratory_all_logs_path(@lab, format: :csv), class: "btn btn-success", data:{ confirm: "#{Date.current.financial_year}年度の全ログをダウンロードします<br>容量が大きいと予想されますがよろしいですか", cancel: "中止", commit: "ダウンロード"}, title: "ダウンロードの確認"

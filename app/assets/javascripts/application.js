@@ -19,6 +19,7 @@
 //= require jquery_ujs
 //= require Chart.bundle
 //= require chartkick
+//= require data-confirm-modal
 //= require_tree .
 
 $(document).on('turbolinks:load', function(){
