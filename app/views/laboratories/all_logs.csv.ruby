@@ -9,7 +9,7 @@ name_col = []
 csvs = CSV.generate do |csv|
   @lab.members.each do |member|
     id_col << member.id
-    name_col << member.firstname+member.lastname
+    name_col << member.lastname+member.firstname
   end
 
   csv << name_col
