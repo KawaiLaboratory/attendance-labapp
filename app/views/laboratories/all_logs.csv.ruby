@@ -15,6 +15,10 @@ csvs = CSV.generate do |csv|
   csv << name_col
   csv << id_col
   csv << []
+  csv << ["注意事項"]
+  csv << ["・UNIXTIMEは60で割れば[min]に, 3600で割れば[hour]になります"]
+  csv << ["・ステータスは作成日時以前のものを表し, そのステータスでいた時間がUNIXTIMEになります"]
+  csv << []
   csv << ["作成日時", "ステータス", "時間(UNIXTIME)", "メンバーID(上記参照)"]
 
   @lab.members.each do |member|
