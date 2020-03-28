@@ -13,21 +13,26 @@
       h4
         | 予定の設定
     .panel-body
-      #calendar
-  
-  /.panel.panel-info
-    .panel-heading
-      h4
-        | 研究室の設定
-    .panel-body
-      .col-sm-6
-        .form-group
-          = f.label :displayname
-          = f.text_field :displayname, class: 'form-control'
-      .col-sm-6
-        .form-group
-          = f.label :place
-          = f.select :place, Laboratory.places_i18n.map { |k,v| [v ,k] }, {}, class: 'form-control'
+      .row
+        .col-sm-9
+          #calendar
+        .col-sm-3
+          .panel.panel-danger
+            .panel-heading
+              h6
+                | 出欠の入力
+            .panel-body
+              | 開始日時
+              br
+              | 終了日時
+              br
+              | 名前
+              br
+              | ステータス
+              br
+              | 理由
+              br
+              | 繰り返しt/f
 
   = link_to '#settings', role: :button, data: { toggle: :collapse }, aria: { controls: :collapseOne, expanded: false } do
     .panel.panel-default
@@ -36,6 +41,20 @@
           | その他の設定
 
   .collapse#settings
+    .panel.panel-info
+      .panel-heading
+        h4
+          | 研究室の設定
+      .panel-body
+        .col-sm-6
+          .form-group
+            = f.label :displayname
+            = f.text_field :displayname, class: 'form-control'
+        .col-sm-6
+          .form-group
+            = f.label :place
+            = f.select :place, Laboratory.places_i18n.map { |k,v| [v ,k] }, {}, class: 'form-control'
+    
     .panel.panel-success
       .panel-heading
         h4
