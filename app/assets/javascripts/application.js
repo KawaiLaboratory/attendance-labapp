@@ -20,6 +20,9 @@
 //= require Chart.bundle
 //= require chartkick
 //= require data-confirm-modal
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/lang/ja
 //= require_tree .
 
 $(document).on('turbolinks:load', function(){
@@ -89,5 +92,9 @@ $(document).on('turbolinks:load', function(){
       $('.fa-circle').remove();
       $('.btn_radio:checked').closest("label").prepend('<i class="fa fa-circle fa-3x"></i>');
     });
+  });
+  
+  $(function () {
+    $('#calendar').fullCalendar({ });
   });
 });
