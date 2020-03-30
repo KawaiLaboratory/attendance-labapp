@@ -99,7 +99,7 @@ $(document).on('turbolinks:load', function(){
       events: "/laboratory/events.json",
       eventClick:  function(event, jsEvent, view) {
         $('#modalTitle').html(event.title);
-        $('#modalBody').html(event.member);
+        $('#modalBody').html(event.cause);
         $('#calendarModal').modal();
       },
     });

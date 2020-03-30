@@ -11,7 +11,7 @@ class Laboratory::EventsController < ApplicationController
       format.json{
         data = []
         @events.each do |event|
-          hash = {"title": "#{event.member.lastname} / #{event.title}", "start": event.started_at, "end": event.finished_at, "allDay": event.all_day, "status": event.status}
+          hash = {"title": "#{event.member.lastname} / #{event.status_i18n}", "start": event.started_at, "end": event.finished_at, "allDay": event.all_day, "member": event.member.lastname, "cause": event.title}
           data << hash
         end
         render json: data
