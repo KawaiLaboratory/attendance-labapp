@@ -9,7 +9,12 @@ class Laboratory::EventsController < ApplicationController
     respond_to do |format|
       format.html
       format.json{
-        render json: [{title: "aaa", start: "2020-03-03"}, {title: "aaa", start: "2020-03-05"}]
+        data = []
+        @events.each do |event|
+          hash = {"title": event.title, "start": event.started_at, "end": event.finished_at, "allDay": event.all_day, "member": event.member.lastname, "status": event.status}
+          data << hash
+        end
+        render json: data
       }
     end
   end

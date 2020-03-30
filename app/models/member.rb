@@ -1,6 +1,8 @@
 class Member < ApplicationRecord
   has_many   :logs, dependent: :delete_all
+  has_many   :events, dependent: :delete_all
   belongs_to :laboratory
+  
   
   ACTIVE_RANGE = 0..4 #食事も含む
   

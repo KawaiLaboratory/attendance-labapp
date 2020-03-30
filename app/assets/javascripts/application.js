@@ -96,18 +96,12 @@ $(document).on('turbolinks:load', function(){
   
   $(function () {
     $('#calendar').fullCalendar({
-      events: "/laboratory/events.json"
+      events: "/laboratory/events.json",
+      eventClick:  function(event, jsEvent, view) {
+        $('#modalTitle').html(event.title);
+        $('#modalBody').html(event.member);
+        $('#calendarModal').modal();
+      },
     });
-  });
-  
-  $.ajax({
-    url: "/laboratory/events.json",
-    type: "GET",
-  })
-  .done(function(response){
-    console.log(response);
-  })
-  .fail(function(){
-    console.log("failed!");
   });
 });

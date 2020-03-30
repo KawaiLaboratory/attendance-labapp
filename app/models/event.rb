@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :laboratory
+  belongs_to :member
   
   DEFAULT_START_DAY = Date.current+1.day
   DEFAULT_FINISH_DAY = Date.current+2.day

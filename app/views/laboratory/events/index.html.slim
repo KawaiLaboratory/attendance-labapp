@@ -26,3 +26,16 @@
             = f.label :all_day
       .form-group
         = f.submit '更新', class: 'btn btn-info btn-lg'
+        
+#calendarModal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close data-dismiss="modal" type="button" 
+          span aria-hidden="true" x
+          span.sr-only close
+        h4#modalTitle.modal-title
+      #modalBody.modal-body
+      .modal-footer
+        button.btn.btn-default data-dismiss="modal" type="button"  Close
+
