@@ -14,11 +14,10 @@ ActiveRecord::Schema.define(version: 2020_03_30_055402) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "laboratory_id"
-    t.bigint "member_id"
+    t.bigint "member_id", null: false
     t.datetime "started_at", null: false
-    t.datetime "fineshed_at", null: false
+    t.datetime "finished_at", null: false
     t.string "title", null: false
-    t.string "comment"
     t.integer "status", default: 0, null: false
     t.boolean "all_day", default: false, null: false
     t.datetime "created_at", null: false
@@ -36,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_03_30_055402) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
-    t.datetime "member_updated_at", default: "2020-03-30 06:08:39", null: false
+    t.datetime "member_updated_at", default: "2020-03-30 08:05:17", null: false
     t.index ["email"], name: "index_laboratories_on_email", unique: true
     t.index ["name"], name: "index_laboratories_on_name", unique: true
   end

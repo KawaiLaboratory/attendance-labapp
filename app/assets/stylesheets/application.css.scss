@@ -77,6 +77,11 @@ select.sp-select{
   width: 40%;
 }
 
+.bootstrap-date {
+  display: inline-block;
+  width: auto;
+}
+
 #navbar-list-menu-pc {
   display: none;
   float: right;
@@ -93,4 +98,23 @@ select.sp-select{
   #navbar-list-menu-pc{
     display: block;
   }
+}
+
+.fc-sat{
+  background-color: #d9edf7;
+}
+
+.fc-sun{
+  background-color: #f2dede;
+}
+
+.fc-today {
+ background-color: #f3f3f3;
+}
+
+.fc-right .fc-prev-button, .fc-right .fc-next-button {
+ background-color: #262626;
+ color: white;
+ background-image: none;
+ border: none;
 }

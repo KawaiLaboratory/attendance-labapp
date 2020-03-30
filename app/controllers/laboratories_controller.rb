@@ -42,6 +42,7 @@ class LaboratoriesController < ApplicationController
     if @lab.update(lab_params)
       redirect_to root_path, notice: "更新しました"
     else
+      flash.now[:alert] = "更新に失敗しました"
       render :edit
     end
   end

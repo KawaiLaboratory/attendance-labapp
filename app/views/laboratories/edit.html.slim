@@ -1,4 +1,4 @@
-= form_with model: @lab do |f|
+= form_with model: @lab, local: true do |f|
   / とりあえずパスワード更新はできない処理で行く
   /.form-group
     = f.label :password
