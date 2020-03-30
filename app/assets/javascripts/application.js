@@ -95,6 +95,19 @@ $(document).on('turbolinks:load', function(){
   });
   
   $(function () {
-    $('#calendar').fullCalendar({ });
+    $('#calendar').fullCalendar({
+      events: "/laboratory/events.json"
+    });
+  });
+  
+  $.ajax({
+    url: "/laboratory/events.json",
+    type: "GET",
+  })
+  .done(function(response){
+    console.log(response);
+  })
+  .fail(function(){
+    console.log("failed!");
   });
 });
