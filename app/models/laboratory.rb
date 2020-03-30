@@ -12,6 +12,8 @@ class Laboratory < ApplicationRecord
   attribute :place       , :integer , default: -> { places.keys.index("others") }
   
   has_many :members, -> { order(:grade, :class_number) }, dependent: :destroy, inverse_of: :laboratory
+  has_many :events, dependent: :destroy, inverse_of: :laboratory
+  
   accepts_nested_attributes_for :members, allow_destroy: true, reject_if: :reject_member
   
   enum place: {

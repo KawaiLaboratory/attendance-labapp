@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_020653) do
+ActiveRecord::Schema.define(version: 2020_03_30_055402) do
+
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "laboratory_id"
+    t.bigint "member_id"
+    t.datetime "started_at", null: false
+    t.datetime "fineshed_at", null: false
+    t.string "title", null: false
+    t.string "comment"
+    t.integer "status", default: 0, null: false
+    t.boolean "all_day", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["laboratory_id"], name: "index_events_on_laboratory_id"
+    t.index ["member_id"], name: "index_events_on_member_id"
+  end
 
   create_table "laboratories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -21,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_020653) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
-    t.datetime "member_updated_at", default: "2019-12-03 04:06:56", null: false
+    t.datetime "member_updated_at", default: "2020-03-30 06:08:39", null: false
     t.index ["email"], name: "index_laboratories_on_email", unique: true
     t.index ["name"], name: "index_laboratories_on_name", unique: true
   end
@@ -49,6 +64,8 @@ ActiveRecord::Schema.define(version: 2019_12_03_020653) do
     t.index ["laboratory_id"], name: "index_members_on_laboratory_id"
   end
 
+  add_foreign_key "events", "laboratories"
+  add_foreign_key "events", "members"
   add_foreign_key "logs", "members"
   add_foreign_key "members", "laboratories"
 end

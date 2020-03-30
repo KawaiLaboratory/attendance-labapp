@@ -8,63 +8,30 @@
     = f.password_field :password_confirmation, class: 'form-control'
   = render "shared/error_msgs", model: f.object
 
-  .panel.panel-warning
+  .panel.panel-info
     .panel-heading
       h4
-        | 予定の設定
+        | 研究室の設定
     .panel-body
-      .row
-        .col-sm-9
-          #calendar
-        .col-sm-3
-          .panel.panel-danger
-            .panel-heading
-              h6
-                | 出欠の入力
-            .panel-body
-              | 開始日時
-              br
-              | 終了日時
-              br
-              | 名前
-              br
-              | ステータス
-              br
-              | 理由
-              br
-              | 繰り返しt/f
-
-  = link_to '#settings', role: :button, data: { toggle: :collapse }, aria: { controls: :collapseOne, expanded: false } do
-    .panel.panel-default
-      .panel-heading
-        h4
-          | その他の設定
-
-  .collapse#settings
-    .panel.panel-info
-      .panel-heading
-        h4
-          | 研究室の設定
-      .panel-body
-        .col-sm-6
-          .form-group
-            = f.label :displayname
-            = f.text_field :displayname, class: 'form-control'
-        .col-sm-6
-          .form-group
-            = f.label :place
-            = f.select :place, Laboratory.places_i18n.map { |k,v| [v ,k] }, {}, class: 'form-control'
-    
-    .panel.panel-success
-      .panel-heading
-        h4
-          | メンバーの設定
-      .panel-body
-        #member
-          = f.fields_for :members do |member|
-            = render "member_fields", f: member
-        #links
-          = link_to_add_association "メンバーを追加", f, :members, class: "btn btn-success btn-lg"
+      .col-sm-6
+        .form-group
+          = f.label :displayname
+          = f.text_field :displayname, class: 'form-control'
+      .col-sm-6
+        .form-group
+          = f.label :place
+          = f.select :place, Laboratory.places_i18n.map { |k,v| [v ,k] }, {}, class: 'form-control'
   
+  .panel.panel-success
+    .panel-heading
+      h4
+        | メンバーの設定
+    .panel-body
+      #member
+        = f.fields_for :members do |member|
+          = render "member_fields", f: member
+      #links
+        = link_to_add_association "メンバーを追加", f, :members, class: "btn btn-success btn-lg"
+
   .form-group
     = f.submit '更新', class: 'btn btn-info btn-lg'

@@ -76,3 +76,21 @@ select.sp-select{
 .sp-col-status{
   width: 40%;
 }
+
+#navbar-list-menu-pc {
+  display: none;
+  float: right;
+}
+
+#navbar-list-menu {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  #navbar-list-menu {
+    display: none;
+  }
+  #navbar-list-menu-pc{
+    display: block;
+  }
+}

@@ -1,11 +1,37 @@
 nav.navbar.navbar-inverse.navbar-static-top
   .container
     = link_to "AttApp(β)", root_path, class: "navbar-brand"
-    
-    - if signed_in?
-      .pull-right
-        .btn-group
-          = link_to "詳細", laboratory_path(current_laboratory), class: "btn btn-success navbar-btn"
-          = link_to "設定", edit_laboratory_path(current_laboratory), class: "btn btn-info navbar-btn"
-          = link_to "ログアウト", destroy_laboratory_session_path, method: :delete, class: "btn navbar-btn btn-default"
-      .clearfix
+    .navbar-right
+      - if signed_in?
+        /* PC用 */
+        ul#navbar-list-menu-pc.nav.navbar-nav
+          li
+            = link_to "出欠", root_path
+          li
+            = link_to "予定", laboratory_events_path
+          li
+            = link_to "詳細", laboratory_path(current_laboratory)
+          li
+            = link_to "設定", edit_laboratory_path(current_laboratory)
+          li
+            = link_to "ログアウト", destroy_laboratory_session_path, method: :delete
+
+        /* スマホ用 */
+        
+        button.navbar-toggle.collapsed aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button" 
+          span.sr-only
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        #navbar.navbar-collapse.collapse
+          ul#navbar-list-menu.nav.navbar-nav.navbar-right
+            li.nav-item
+              = link_to "出欠", root_path
+            li.nav-item
+              = link_to "予定", laboratory_events_path
+            li.nav-item
+              = link_to "詳細", laboratory_path(current_laboratory)
+            li.nav-item
+              = link_to "設定", edit_laboratory_path(current_laboratory)
+            li.nav-item
+              = link_to "ログアウト", destroy_laboratory_session_path, method: :delete
