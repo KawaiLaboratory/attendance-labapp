@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   resource :members, only: [:update]
   namespace :laboratory do
-    resources :events, only: [:index, :create, :update]
+    resources :events, only: [:index, :create, :update, :destroy]
   end
   #雑ajax
   get "/ajax", to: "laboratories#ajax"
