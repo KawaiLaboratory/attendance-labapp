@@ -11,13 +11,13 @@ class Laboratory::EventsController < ApplicationController
       format.json{
         data = []
         colors = {
-          office:     "#fcf8e3",
-          experiment: "#fcf8e3",
-          machining:  "#fcf8e3",
-          ogigaoka:   "#d9edf7",
-          cafeteria:  "#f2dede",
-          classwork:  "#dff0d8",
-          offcampus:  "#dff0d8",
+          office:     "#f0ad4e",
+          experiment: "#f0ad4e",
+          machining:  "#f0ad4e",
+          ogigaoka:   "#5bc0de",
+          cafeteria:  "#d9534f",
+          classwork:  "#5cb85c",
+          offcampus:  "#5cb85c",
           athome:     "#337ab7",
           jobhunt:    "#337ab7",
           absence:    "#337ab7",
