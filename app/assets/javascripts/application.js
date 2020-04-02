@@ -97,6 +97,13 @@ $(document).on('turbolinks:load', function(){
   $(function () {
     $('#calendar').fullCalendar({
       events: "/laboratory/events.json",
+      header: {
+            // title, prev, next, prevYear, nextYear, today
+            left: 'title',
+            right: 'prev,next today month,agendaWeek,agendaDay'
+      },
+      selectHelper: true,
+      selectable: true,
       eventClick:  function(event, jsEvent, view) {
         var start_m = moment(event.start);
         var start_output = start_m.format('YYYY年MM月DD日 HH:mm');

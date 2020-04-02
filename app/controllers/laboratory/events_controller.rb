@@ -53,6 +53,13 @@ class Laboratory::EventsController < ApplicationController
   end
 
   def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      redirect_to  laboratory_events_path, notice: "更新しました"
+    else
+      flash.now[:alert] = "更新に失敗しました"
+      render :index
+    end
   end
   
   def destroy

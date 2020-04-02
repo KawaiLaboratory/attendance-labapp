@@ -107,9 +107,18 @@ select.sp-select{
  background-color: #f3f3f3;
 }
 
+.fc-event {
+  font-size:18px;
+  margin-bottom: 4px;
+}
+
+.fc-content .fc-time {
+  display: none;
+}
+
 .fc-right .fc-prev-button, .fc-right .fc-next-button {
- background-color: #262626;
- color: white;
- background-image: none;
- border: none;
+  background-color: #262626;
+  color: white;
+  background-image: none;
+  border: none;
 }

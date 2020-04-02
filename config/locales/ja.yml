@@ -89,3 +89,9 @@ ja:
         id:         ID
         total_time: 活動時間
         status:     活動内容
+      event:
+        started_at: 開始日時
+        finished_at: 終了日時
+        member_id: メンバー
+        status: ステータス
+        title: 内容
