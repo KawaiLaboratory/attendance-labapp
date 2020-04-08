@@ -33,12 +33,9 @@ class MembersController < ApplicationController
     end
     current_laboratory.update(member_updated_at: changed_at)
     if Rails.env == 'production'
-      notifier = Slack::Notifier.new(
-        env['WEBHOOK_URL'],
-        channel: '#' + env['CHANNEL']
-      )
+      notifier = Slack::Notifier.new(Rails.application.config.slack_webhook_url)
       message.each do |m|
-        notifier.ping m
+        notifier.ping(m)
       end
     end
     redirect_to root_path
