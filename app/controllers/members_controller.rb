@@ -26,8 +26,9 @@ class MembersController < ApplicationController
       member_params.each do |id, member_param|
         member = current_laboratory.members.find(id)
         if member.status != member_param[:status]
-          message << "#{member.lastname}が#{member.status}から#{member_param[:status]}になりました"
+          before_status = member.status_i18n
           member.change_status(member_param[:status], changed_at)
+          message << "#{member.lastname}が#{before_status}から#{member.status_i18n}になりました"
         end
       end
     end
