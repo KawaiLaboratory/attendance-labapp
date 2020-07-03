@@ -33,6 +33,9 @@ gem "actionview", ">= 5.2.4.2"
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'slack-notifier'
+gem "activesupport", ">= 5.2.4.3"
+gem "actionpack", ">= 5.2.4.3"
+gem "activestorage", ">= 5.2.4.3"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

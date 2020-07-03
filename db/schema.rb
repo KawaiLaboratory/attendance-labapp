@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_03_30_055402) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
-    t.datetime "member_updated_at", default: "2020-03-30 10:12:49", null: false
+    t.datetime "member_updated_at", default: "2020-07-03 01:33:30", null: false
     t.index ["email"], name: "index_laboratories_on_email", unique: true
     t.index ["name"], name: "index_laboratories_on_name", unique: true
   end
