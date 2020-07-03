@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_055402) do
+ActiveRecord::Schema.define(version: 2020_07_03_020856) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "laboratory_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_03_30_055402) do
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
     t.datetime "member_updated_at", default: "2020-07-03 01:33:30", null: false
+    t.string "slack_url"
     t.index ["email"], name: "index_laboratories_on_email", unique: true
     t.index ["name"], name: "index_laboratories_on_name", unique: true
   end

@@ -77,6 +77,7 @@ ja:
         place:        所在地
         email:        メールアドレス
         password:     パスワード
+        slack_url:    Incoming Webhook URL
       member:
         id: ID
         firstname:    名

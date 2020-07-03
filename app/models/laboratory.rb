@@ -7,6 +7,7 @@ class Laboratory < ApplicationRecord
   validates :displayname       , presence: true
   validates :place             , presence: true
   validates :member_updated_at , presence: true
+  validates :slack_url         , length: { maximum: 255 }
   
   attribute :name             , :string  , default: -> { "laboratory-#{SecureRandom.hex(10)}" }
   attribute :displayname      , :string  , default: -> { "研究室" }
