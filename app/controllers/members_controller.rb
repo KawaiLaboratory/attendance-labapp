@@ -10,8 +10,8 @@ class MembersController < ApplicationController
         if member.go_cafeteria?
           member.change_status(Member.statuses[:cafeteria], changed_at)
         end
-        message << "食堂へ行きました"
       end
+      message << "食堂へ行きました"
     elsif params[:finished_lanch]
       current_laboratory.members.cafeteria.each do | member |
         member.change_status(Member.statuses[:office], changed_at)
