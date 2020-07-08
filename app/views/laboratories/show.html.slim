@@ -15,7 +15,9 @@
             th.text-center
               = l(date, format: :short)
         th.text-center
-          | 累計[h]
+          = Date.current.financial_year.to_s + "年度[h]"
+        th.text-center
+          = "累計[h]"
     tbody
       - @lab.members.each do |member|
         tr
@@ -24,10 +26,15 @@
           - @period.each do |date|
             td.text-center
               = (member.active_logs_at_day(date.beginning_of_day..date.end_of_day).sum(:total_time)/3600.0).round(1)
-          td.text-center
-            - if member.logs.blank?
+          - if member.logs.blank?
+            td.text-center
               | 0.0
-            - else
+            td.text-center
+              | 0.0
+          - else
+            td.text-center
+              = (member.active_logs_at_yearly.sum(:total_time)/3600.0).round(1)
+            td.text-center
               = (member.active_logs.sum(:total_time)/3600.0).round(1)
 
 h3

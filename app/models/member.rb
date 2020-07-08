@@ -3,7 +3,6 @@ class Member < ApplicationRecord
   has_many   :events, dependent: :delete_all
   belongs_to :laboratory
   
-  
   ACTIVE_RANGE = 0..4 #食事も含む
   
   validates :lastname     , presence: true
@@ -52,8 +51,13 @@ class Member < ApplicationRecord
     homecaming: 10,
   }
   
+  #もっときれいにできそう
   def active_logs
     logs.where(status: ACTIVE_RANGE)
+  end
+  
+  def active_logs_at_yearly
+    logs.where(status: ACTIVE_RANGE).where(created_at: Date.current.beginning_of_financial_year..Date.current.end_of_financial_year)
   end
   
   def active_logs_at_day(range)
