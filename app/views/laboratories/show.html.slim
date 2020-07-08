@@ -27,15 +27,15 @@
             - time = (member.active_logs_at_day(date.beginning_of_day..date.end_of_day).sum(:total_time)/3600.0).round(1)
             - if time.zero?
               td.text-center
-                | 0.0
+                | 
             - else
               td.text-center.bg-success
                 = time
           - if member.logs.blank?
             td.text-center
-              | 0.0
+              | 0
             td.text-center
-              | 0.0
+              | 0
           - else
             td.text-center
               = (member.active_logs_at_yearly.sum(:total_time)/3600.0).round(1)
