@@ -14,9 +14,9 @@
           - else
             th.text-center
               = l(date, format: :short)
-        th.text-center
+        th.text-center.bg-success
           = Date.current.financial_year.to_s + "年度[h]"
-        th.text-center
+        th.text-center.bg-success
           = "累計[h]"
     tbody
       - @lab.members.each do |member|
@@ -24,8 +24,13 @@
           td
             = link_to "#{member.lastname} #{member.firstname}", laboratory_path(@lab, member_id: member.id, format: :csv)
           - @period.each do |date|
-            td.text-center
-              = (member.active_logs_at_day(date.beginning_of_day..date.end_of_day).sum(:total_time)/3600.0).round(1)
+            - time = (member.active_logs_at_day(date.beginning_of_day..date.end_of_day).sum(:total_time)/3600.0).round(1)
+            - if time.zero?
+              td.text-center
+                | 0.0
+            - else
+              td.text-center.bg-success
+                = time
           - if member.logs.blank?
             td.text-center
               | 0.0
