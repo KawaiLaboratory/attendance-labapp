@@ -11,9 +11,9 @@ csvs = CSV.generate do |csv|
   @period.each do |date|
     column = []
     column << date.strftime('%Y/%m/%d(%a)')
-    column << (@member.each_logs_at_day(date.beginning_of_day..date.end_of_day, 0..2).sum(:total_time)/3600.0).round(1)
+    column << @member.each_logs_at_range(date.beginning_of_day..date.end_of_day, 0..2)
     (3..6).each do |num|
-      column << (@member.each_logs_at_day(date.beginning_of_day..date.end_of_day, num).sum(:total_time)/3600.0).round(1)
+      column << @member.each_logs_at_range(date.beginning_of_day..date.end_of_day, num)
     end
     csv << column
   end

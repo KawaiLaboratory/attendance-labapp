@@ -24,7 +24,7 @@
           td
             = link_to "#{member.lastname} #{member.firstname}", laboratory_path(@lab, member_id: member.id, format: :csv)
           - @period.each do |date|
-            - time = (member.active_logs_at_day(date.beginning_of_day..date.end_of_day).sum(:total_time)/3600.0).round(1)
+            - time = member.active_logs_at_range(date.beginning_of_day..date.end_of_day)
             - if time.zero?
               td.text-center
                 | 
@@ -38,9 +38,9 @@
               | 0
           - else
             td.text-center
-              = (member.active_logs_at_yearly.sum(:total_time)/3600.0).round(1)
+              = member.active_logs_at_range(Date.current.beginning_of_financial_year..Date.current.end_of_financial_year)
             td.text-center
-              = (member.active_logs.sum(:total_time)/3600.0).round(1)
+              = member.active_logs
 
 h3
   = Date.current.financial_year.to_s + "年度の活動時間"

@@ -51,21 +51,22 @@ class Member < ApplicationRecord
     homecaming: 10,
   }
   
-  #もっときれいにできそう
   def active_logs
-    logs.where(status: ACTIVE_RANGE)
+    active_time = logs.where(status: ACTIVE_RANGE).sum(:total_time)
+    active_time = (active_time/3600.0).round(1)
+    return active_time
   end
   
-  def active_logs_at_yearly
-    logs.where(status: ACTIVE_RANGE).where(created_at: Date.current.beginning_of_financial_year..Date.current.end_of_financial_year)
+  def active_logs_at_range(range)
+    active_time = logs.where(status: ACTIVE_RANGE).where(created_at: range).sum(:total_time)
+    active_time = (active_time/3600.0).round(1)
+    return active_time
   end
   
-  def active_logs_at_day(range)
-    logs.where(created_at: range).where(status: ACTIVE_RANGE)
-  end
-  
-  def each_logs_at_day(range, status)
-    logs.where(created_at: range).where(status: status)
+  def each_logs_at_range(range, status)
+    active_time = logs.where(created_at: range).where(status: status).sum(:total_time)
+    active_time = (active_time/3600.0).round(1)
+    return active_time
   end
 
   def change_status(next_status, now)
