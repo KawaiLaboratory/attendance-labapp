@@ -3,29 +3,15 @@ require "nkf"
 
 today = Date.current
 range = today.beginning_of_financial_year-1.month..today.end_of_financial_year-1.month
-id_col = []
-name_col = []
 
 csvs = CSV.generate do |csv|
-  @lab.members.each do |member|
-    id_col << member.id
-    name_col << member.lastname+member.firstname
-  end
-
-  csv << name_col
-  csv << id_col
-  csv << []
-  csv << ["注意事項"]
-  csv << ["・UNIXTIMEは60で割れば[min]に, 3600で割れば[hour]になります"]
-  csv << ["・ステータスは作成日時以前のものを表し, そのステータスでいた時間がUNIXTIMEになります"]
-  csv << []
-  csv << ["作成日時", "ステータス", "時間(UNIXTIME)", "メンバーID(上記参照)"]
+  csv << ["開始日時", "終了日時", "ステータス", "時間[m]", "メンバー"]
 
   @lab.members.each do |member|
-    logs = member.each_logs_at_day(range, Member.statuses.values)
+    logs = member.all_logs_at_range(range, Member.statuses.values)
 
     logs.each do |log|
-      csv << [log.created_at, log.status_i18n, log.total_time, member.id]
+      csv << [log.created_at-log.total_time, log.created_at, log.status_i18n, (log.total_time/60.0).round(1), member.lastname+member.firstname]
     end
   end
 end

@@ -68,6 +68,10 @@ class Member < ApplicationRecord
     active_time = (active_time/3600.0).round(1)
     return active_time
   end
+  
+  def all_logs_at_range(range, status)
+    logs.where(created_at: range).where(status: status)
+  end
 
   def change_status(next_status, now)
     logs.build(
