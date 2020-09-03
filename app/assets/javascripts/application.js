@@ -86,9 +86,25 @@ $(document).on('turbolinks:load', function(){
   
   $(function(){
     $('.btn_radio').change( function() {
-      // var nextStatus = $('input[name^="members"]:checked').closest("label");
-      // $(".btn_radio").closest("label").not(nextStatus).not("").removeClass("btn-primary").addClass("btn-default");
-      // nextStatus.removeClass("btn-default").addClass("btn-primary");
+      var changed_data = $(this)[0].id.split("_");
+      var changed_id = Number(changed_data[1]);
+      var changed_status = String(changed_data[3]);
+
+      $.ajax({
+        url: "/members",
+        type: "PUT",
+        data: {"members": {
+                [changed_id] : {"status": changed_status}},
+                "update_status": "更新"},
+        dataType: 'json'
+      })
+      .done(function(){
+        location.reload();
+      })
+      .fail(function(){
+        location.reload();
+      });
+
       $('.fa-circle').remove();
       $('.btn_radio:checked').closest("label").prepend('<i class="fa fa-circle fa-3x"></i>');
     });
