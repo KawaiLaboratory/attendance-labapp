@@ -12,7 +12,7 @@
         = f.datetime_field :finished_at, class: "form-control"
       .form-group
         = f.label :member_id
-        = f.select :member_id, @lab.members.map{ |m| [m.lastname+" "+m.firstname, m.id] }, {include_blank: true}, class: 'form-control'
+        = f.select :member_id, @lab.active_members.map{ |m| [m.lastname+" "+m.firstname, m.id] }, {include_blank: true}, class: 'form-control'
       .form-group
         = f.label :status
         = f.select :status, @lab.members.statuses_i18n.map { |k,v| [v ,k] }, {}, class: 'form-control'

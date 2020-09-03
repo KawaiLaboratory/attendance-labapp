@@ -73,6 +73,6 @@ class LaboratoriesController < ApplicationController
   end
   
   def lab_params
-    params.require(:laboratory).permit(:displayname, :place, :slack_url, members_attributes:[:id, :lastname, :firstname, :go_cafeteria, :grade, :class_number, :archived])
+    params.require(:laboratory).permit(:displayname, :place, :slack_url, members_attributes:[:id, :lastname, :firstname, :go_cafeteria, :grade, :class_number, :archived, :_destroy])
   end
 end
