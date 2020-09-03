@@ -26,6 +26,10 @@ class Laboratory < ApplicationRecord
     others:     4
   }
 
+  def active_members
+    members.where(archived: false)
+  end
+
   def to_param
     name
   end

@@ -19,7 +19,7 @@
         th.text-center.bg-warning
           = "累計[h]"
     tbody
-      - @lab.members.each do |member|
+      - @lab.active_members.each do |member|
         tr
           td
             = link_to "#{member.lastname} #{member.firstname}", laboratory_path(@lab, member_id: member.id, format: :csv)

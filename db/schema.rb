@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_03_020856) do
+ActiveRecord::Schema.define(version: 2020_09_03_053240) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "laboratory_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_07_03_020856) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "class_number", default: 0, null: false
+    t.boolean "archived", default: false, null: false
     t.index ["laboratory_id"], name: "index_members_on_laboratory_id"
   end
 

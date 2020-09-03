@@ -18,10 +18,13 @@
         .form-group
           = f.label :class_number
           = f.number_field :class_number, class: 'form-control'
-      .col-sm-4
+      .col-sm-2
         .form-group
           = f.label :go_cafeteria
           = f.select :go_cafeteria, [["食堂", true], ["研究室", false]], {}, class: 'form-control'
-    .pull-right
-      = link_to_remove_association "メンバーを削除", f, class: "btn btn-danger", data:{ confirm: "メンバーを削除します", cancel: "中止", commit: "削除"}, title: "削除の確認"
+      .col-sm-2
+        = f.label :archived
+        = f.select :archived, [["離籍", true], ["在籍", false]], {}, class: 'form-control'
+    //.pull-right
+      //= link_to_remove_association "メンバーを削除", f, class: "btn btn-danger", data:{ confirm: "メンバーを削除します", cancel: "中止", commit: "削除"}, title: "削除の確認"
     .clearfix

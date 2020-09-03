@@ -33,9 +33,22 @@
     .panel-body
       #member
         = f.fields_for :members do |member|
-          = render "member_fields", f: member
+          - unless(member.object.archived?)
+            = render "member_fields", f: member
       #links
         = link_to_add_association "メンバーを追加", f, :members, class: "btn btn-success btn-lg"
+  
+  .panel.panel-success
+    .panel-heading
+      = link_to "#archived_member_setting", 'data-toggle': "collapse" do
+        h4
+          | その他メンバーの設定
+    #archived_member_setting.panel-collapse.collapse
+      .panel-body
+        #member
+          = f.fields_for :members do |member|
+            - if(member.object.archived?)
+              = render "member_fields", f: member
 
   .form-group
     = f.submit '更新', class: 'btn btn-info btn-lg'

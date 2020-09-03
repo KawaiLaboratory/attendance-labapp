@@ -12,6 +12,7 @@ class Member < ApplicationRecord
   validates :grade        , presence: true
   validates :class_number , presence: true
   validates :go_cafeteria , inclusion: { in: [true, false] }
+  validates :archived     , inclusion: { in: [true, false] } 
   
   attribute :lastname     , :string  , default: -> { "" }
   attribute :firstname    , :string  , default: -> { "" }
@@ -20,6 +21,7 @@ class Member < ApplicationRecord
   attribute :grade        , :integer , default: -> { grades.keys.index("others") }
   attribute :class_number , :integer , default: -> { 0 }
   attribute :go_cafeteria , :boolean , default: -> { true }
+  attribute :archived     , :boolean , default: -> { false } 
   
   enum grade: {
     teacher: 0,
