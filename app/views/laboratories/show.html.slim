@@ -44,11 +44,11 @@
 
 h3
   = Date.current.financial_year.to_s + "年度の活動時間"
-  - if @lab.members.size > 16
-    - @lab.members.each_slice((@lab.members.size.to_f/2).ceil) do |members|
-      = column_chart @f_year.map{ |y| {name: y.strftime("%-m月"), data: @lab.members.active_logs_through_year(y, members)}}, stacked: true
+  - if @lab.active_members.size > 16
+    - @lab.active_members.each_slice((@lab.active_members.size.to_f/2).ceil) do |members|
+      = column_chart @f_year.map{ |y| {name: y.strftime("%-m月"), data: @lab.active_members.active_logs_through_year(y, members)}}, stacked: true
   - else 
-    = column_chart @f_year.map{ |y| {name: y.strftime("%-m月"), data: @lab.members.active_logs_through_year(y, @lab.members)}}, stacked: true
+    = column_chart @f_year.map{ |y| {name: y.strftime("%-m月"), data: @lab.active_members.active_logs_through_year(y, @lab.active_members)}}, stacked: true
 
 .panel.panel-default
   .panel-heading.text-center

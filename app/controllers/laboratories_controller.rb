@@ -27,7 +27,7 @@ class LaboratoriesController < ApplicationController
       end
       
       format.csv do
-        @member = @lab.members.find_by(id: params[:member_id])
+        @member = @lab.active_members.find_by(id: params[:member_id])
         @period = (date-100.days..date)
         filename = "#{@member.lastname}_logs"
         headers["Content-Disposition"] = "attachment; filename=\"#{filename}.csv\""

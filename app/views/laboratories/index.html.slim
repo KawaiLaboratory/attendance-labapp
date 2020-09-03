@@ -1,4 +1,4 @@
-- if @lab.members.present?
+- if @lab.active_members.present?
   = form_with url: members_path, method: :put do
     - if request.smart_phone? && !request.tablet?
         = render partial: "table_sp", locals: { l_members: @lab.active_members }
