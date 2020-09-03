@@ -66,9 +66,9 @@ class LaboratoriesController < ApplicationController
 
   def set_lab
     if action_name == "show"
-      @lab = Laboratory.includes(members: :logs).find_by(name: current_laboratory.name)
+      @lab = Laboratory.eager_load(members: :logs).find_by(name: current_laboratory.name)
     else
-      @lab = Laboratory.includes(:members).find_by(name: current_laboratory.name)
+      @lab = Laboratory.eager_load(:members).find_by(name: current_laboratory.name)
     end
   end
   
