@@ -45,6 +45,7 @@
           | 離籍メンバーの設定
     #archived_member_setting.panel-collapse.collapse
       .panel-body
+        | ここには離籍したメンバーの情報が表示されます。
         #member
           = f.fields_for :members do |member|
             - if(member.object.archived?)
