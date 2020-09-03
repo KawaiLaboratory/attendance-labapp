@@ -85,7 +85,7 @@ ja:
         grade:        クラス
         class_number: クラス番号
         status:       現在地
-        go_cafeteria: 昼食時の居場所
+        go_cafeteria: 昼食時
         archived:     在籍状況
       log:
         id:         ID
