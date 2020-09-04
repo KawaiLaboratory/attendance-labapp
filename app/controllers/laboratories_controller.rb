@@ -23,7 +23,17 @@ class LaboratoriesController < ApplicationController
     respond_to do |format|
       format.html do
         @period = (date-6.days..date)
-        @f_year = Array.new(12) { |n| date.beginning_of_financial_year + n.month }
+        @data = []
+        current_year = date.beginning_of_financial_year
+        12.times do |n|
+          month_started = current_year+(n-1).month
+          month_log_data = []
+          @lab.active_members.each do |member|
+            log_data = member.active_logs_at_range(month_started..month_started.end_of_month)
+            month_log_data << ["#{member.lastname}", "#{log_data}"]
+          end
+          @data << {"name": "#{month_started.month}月", "data": month_log_data}
+        end
       end
       
       format.csv do
