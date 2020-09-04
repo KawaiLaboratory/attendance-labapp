@@ -8,15 +8,19 @@
       - if request.smart_phone? && !request.tablet?
         .col-sm-3
           = submit_tag "更新", class: "btn btn-primary btn-lg btn-block", name: "update_status"
-      - else
         .col-sm-3
-          = submit_tag "更新", class: "btn btn-primary btn-lg btn-block", name: "update_status", disabled: "disabled"
-      .col-sm-3
-        = submit_tag "食事", class: "btn btn-primary btn-lg btn-block", name: "go_cafeteria"
-      .col-sm-3
-        = submit_tag "食事終了", class: "btn btn-primary btn-lg btn-block", name: "finished_lanch"
-      .col-sm-3
-        = submit_tag "全員帰宅", class: "btn btn-primary btn-lg btn-block", name: "go_home"
+          = submit_tag "食事", class: "btn btn-primary btn-lg btn-block", name: "go_cafeteria"
+        .col-sm-3
+          = submit_tag "食事終了", class: "btn btn-primary btn-lg btn-block", name: "finished_lanch"
+        .col-sm-3
+          = submit_tag "全員帰宅", class: "btn btn-primary btn-lg btn-block", name: "go_home"
+      - else
+        .col-sm-3.col-sm-offset-3
+          = submit_tag "食事", class: "btn btn-primary btn-lg btn-block", name: "go_cafeteria"
+        .col-sm-3
+          = submit_tag "食事終了", class: "btn btn-primary btn-lg btn-block", name: "finished_lanch"
+        .col-sm-3
+          = submit_tag "全員帰宅", class: "btn btn-primary btn-lg btn-block", name: "go_home"
 - else
   h4
     | メンバーを登録してください
