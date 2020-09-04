@@ -44,8 +44,7 @@
 
 h3
   = Date.current.financial_year.to_s + "年度の活動時間"
-  - @lab.active_members.each_slice((@lab.active_members.size.to_f/2).ceil) do |members|
-    = column_chart @data, stacked: true
+  = column_chart @data, stacked: true
 
 .panel.panel-default
   .panel-heading.text-center
