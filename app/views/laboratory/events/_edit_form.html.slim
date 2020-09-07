@@ -25,3 +25,6 @@
       = f.hidden_field :id, :value => event.id
       .form-group
         = f.submit '更新', class: 'btn btn-info btn-lg'
+.pull-right
+  = link_to "予定の削除", laboratory_event_path(event.id), method: :delete, class: "btn btn-lg btn-danger", data: { confirm: '削除しますか？', cancel: "キャンセル", commit: "削除する" }, title: "削除の確認"
+.clearfix

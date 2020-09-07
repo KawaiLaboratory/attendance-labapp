@@ -125,8 +125,6 @@ $(document).on('turbolinks:load', function(){
           url: "/laboratory/events/"+event.id+"/edit",
           type: "GET",
         }).done(function(event, data, status, xhr){
-          console.log(event);
-          $('#modalTitle').html("<h3>予定の詳細・編集</h3>");
           $('#modalBody').html(event);
           $('#calendarModal').modal();
         })

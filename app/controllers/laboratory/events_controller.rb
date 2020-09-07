@@ -1,6 +1,7 @@
 class Laboratory::EventsController < ApplicationController
   before_action :authenticate_laboratory!
   before_action :set_lab
+  protect_from_forgery
 
   def index
     @event = Event.new
