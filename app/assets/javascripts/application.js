@@ -121,21 +121,15 @@ $(document).on('turbolinks:load', function(){
       selectHelper: true,
       selectable: true,
       eventClick:  function(event, jsEvent, view) {
-        var start_m = moment(event.start);
-        var start_output = start_m.format('YYYY年MM月DD日 HH:mm');
-        var end_m = moment(event.end)
-        var end_output = end_m.format('YYYY年MM月DD日 HH:mm');
-        $('#modalTitle').html("<h3>"+event.title+"</h4>");
-        $('#modalBody').html(
-          "<h4>期間</h4>"+
-           "<h4><ul><li>"+start_output+"~"+end_output+"</li></ul></h4>"+
-           "<h4>内容</h4>"+
-           "<h4><ul><li>"+event.cause+"</li></ul></h4>"
-          ); //causeのタグのエスケープ考える？
-        $('#modalFooter').html(
-          '<a data-confirm="予定を削除します" data-cancel="中止" data-commit="削除" title="削除の確認" class="btn btn-danger" rel="nofollow" data-method="delete" href="/laboratory/events/'+event.id+'">削除</a>'+
-          '<button class="btn btn-default" data-dismiss="modal" type="button"> Close</button>')
-        $('#calendarModal').modal();
+        $.ajax({
+          url: "/laboratory/events/"+event.id+"/edit",
+          type: "GET",
+        }).done(function(event, data, status, xhr){
+          console.log(event);
+          $('#modalTitle').html("<h3>予定の詳細・編集</h3>");
+          $('#modalBody').html(event);
+          $('#calendarModal').modal();
+        })
       },
     });
   });

@@ -1,4 +1,10 @@
-= render "form"
+.row
+  .col-sm-9
+    .panel.panel-default
+      .panel-heading
+        #calendar
+  .col-sm-3
+    = render partial: "edit_form", locals: {event: @event}
         
 #calendarModal.modal.fade
   .modal-dialog
@@ -9,6 +15,3 @@
           span.sr-only close
         h4#modalTitle.modal-title
       #modalBody.modal-body
-      #modalFooter.modal-footer
-
-

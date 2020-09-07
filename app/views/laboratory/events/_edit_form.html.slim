@@ -22,5 +22,6 @@
           label
             = f.check_box :all_day
             = f.label :all_day
+      = f.hidden_field :id, :value => event.id
       .form-group
-        = f.submit '作成', class: 'btn btn-info btn-lg'
+        = f.submit '更新', class: 'btn btn-info btn-lg'

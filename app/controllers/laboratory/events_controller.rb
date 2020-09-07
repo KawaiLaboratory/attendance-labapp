@@ -51,9 +51,14 @@ class Laboratory::EventsController < ApplicationController
       render :index
     end
   end
+  
+  def edit
+    @event = @lab.events.find(params[:id])
+    render partial: "edit_form", locals: {event: @event}
+  end
 
   def update
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:event][:id])
     if @event.update(event_params)
       redirect_to  laboratory_events_path, notice: "更新しました"
     else
