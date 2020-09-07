@@ -5,7 +5,7 @@
 
 ## versions
 - Ruby
-  - 2.4.5
+  - 2.6.6
 - Rails
   - 5.2.2
 
@@ -14,9 +14,5 @@
   - ```rails s -b 0.0.0.0```
 
 ## URLs
-- Develop-Server
-  - https://app4lab-daidai08.c9users.io/
 - Production-Server
   - https://attendance-labapp.herokuapp.com/
-- Heroku-Git
-  - https://git.heroku.com/attendance-labapp.git
