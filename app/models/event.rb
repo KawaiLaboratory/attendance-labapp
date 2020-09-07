@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   belongs_to :member
   
   DEFAULT_START_DAY = Date.current+1.day+8.hour
-  DEFAULT_FINISH_DAY = Date.current+2.day+20.hour
+  DEFAULT_FINISH_DAY = Date.current+1.day+20.hour
   
   validates :started_at  , presence: true
   validates :finished_at , presence: true
