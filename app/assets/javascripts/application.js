@@ -108,14 +108,15 @@ $(document).on('turbolinks:load', function(){
         btn.closest("label").prepend('<i class="fa fa-circle fa-3x"></i>');
         btn.closest("label").removeClass("btn-link").addClass("btn-"+color);
 
-        console.log(color)
         $("#NoticeModalBody").addClass("btn-"+color);
         $("#NoticeModalBody").html(event["message"]);
         $("#NoticeModal").modal({backdrop: false});
         setTimeout(function(){
           $('#NoticeModal').modal('hide');
-          $("#NoticeModalBody").removeClass("btn-"+color);
-        },700);
+          setTimeout(function(){
+            $("#NoticeModalBody").removeClass("btn-"+color);
+          }, 120);
+        },500);
       })
       .fail(function(){
         location.reload();
