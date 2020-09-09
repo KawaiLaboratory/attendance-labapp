@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_09_03_053240) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
-    t.datetime "member_updated_at", default: "2020-07-23 07:06:52", null: false
+    t.datetime "member_updated_at", default: "2020-09-09 04:08:07", null: false
     t.string "slack_url"
     t.index ["email"], name: "index_laboratories_on_email", unique: true
     t.index ["name"], name: "index_laboratories_on_name", unique: true

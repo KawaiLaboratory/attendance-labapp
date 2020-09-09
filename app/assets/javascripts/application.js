@@ -30,7 +30,7 @@ $(document).on('turbolinks:load', function(){
     var ajax_reload = function(){
           var today = new Date();
           var h = today.getHours();
-          var last_updated_at = $(".update")[0].id;
+          var last_updated_at = $(".update").attr("id");
           var started_at = 9;
           var expired_at = 21;
           
@@ -41,7 +41,6 @@ $(document).on('turbolinks:load', function(){
                 type: "GET",
               })
               .done(function(response){
-                console.log("success");
                 if(last_updated_at != response["date"]){
                   location.reload();
                 }
@@ -75,7 +74,6 @@ $(document).on('turbolinks:load', function(){
               });
             }
           }
-          console.log(today);
           setTimeout(function() {ajax_reload()}, 3*1000);
         };
 
@@ -86,27 +84,42 @@ $(document).on('turbolinks:load', function(){
   
   $(function(){
     $('.btn_radio').change( function() {
-      var changed_data = $(this)[0].id.split("_");
+      var changed_data = $(this).attr("id").split("_");
       var changed_id = Number(changed_data[1]);
       var changed_status = String(changed_data[3]);
+      var btn = $(this);
+      var color = $(this).closest("label").attr("class").split(" ")[0].split("_")[1];
 
       $.ajax({
         url: "/members",
         type: "PUT",
         data: {"members": {
-                [changed_id] : {"status": changed_status}},
-                "update_status": "更新"},
+                [changed_id] : {"status": changed_status}}},
         dataType: 'json'
       })
-      .done(function(){
-        location.reload();
+      .done(function(event, data, status, xhr){
+        var before_btn = btn.closest("tr").find("label").not(".btn-link");
+        var before_color = before_btn.closest("label").attr("class").split(" ")[0].split("_")[1];
+        $(".update").attr("id", event["updated_at"]);
+        
+        before_btn.closest("label").children("i").remove();
+        before_btn.closest("label").removeClass("btn-"+before_color).addClass("btn-link");
+
+        btn.closest("label").prepend('<i class="fa fa-circle fa-3x"></i>');
+        btn.closest("label").removeClass("btn-link").addClass("btn-"+color);
+
+        console.log(color)
+        $("#NoticeModalBody").addClass("btn-"+color);
+        $("#NoticeModalBody").html(event["message"]);
+        $("#NoticeModal").modal({backdrop: false});
+        setTimeout(function(){
+          $('#NoticeModal').modal('hide');
+          $("#NoticeModalBody").removeClass("btn-"+color);
+        },700);
       })
       .fail(function(){
         location.reload();
       });
-
-      $('.fa-circle').remove();
-      $('.btn_radio:checked').closest("label").prepend('<i class="fa fa-circle fa-3x"></i>');
     });
   });
   

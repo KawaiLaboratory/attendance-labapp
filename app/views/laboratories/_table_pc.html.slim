@@ -23,9 +23,9 @@
                     - l_members.statuses_i18n.each do |key, value|
                       td.statuses.col-sm-1.text-center
                         - if member.status == key
-                          label class="btn-attendance #{'btn-' + @colors[key.to_sym]}"
+                          label class="color_#{@colors[key.to_sym]} btn-attendance #{'btn-' + @colors[key.to_sym]}"
                             = fa_icon "circle 3x"
                             = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
                         - else
-                          label class="btn-attendance btn-link"
+                          label class="color_#{@colors[key.to_sym]} btn-attendance btn-link"
                             = mr.radio_button :status, key, autocomplete: "off", class: "btn_radio"
