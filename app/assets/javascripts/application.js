@@ -41,7 +41,7 @@ $(document).on('turbolinks:load', function(){
                 type: "GET",
               })
               .done(function(response){
-                if(last_updated_at != response["date"]){
+                if(last_updated_at != response["date"] && $(".container-fluid").length){
                   location.reload();
                 }
               })
