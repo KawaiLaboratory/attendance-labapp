@@ -115,8 +115,8 @@ $(document).on('turbolinks:load', function(){
           $('#NoticeModal').modal('hide');
           setTimeout(function(){
             $("#NoticeModalBody").removeClass("btn-"+color);
-          }, 120);
-        },500);
+          }, 200);
+        },1000);
       })
       .fail(function(){
         location.reload();
