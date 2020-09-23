@@ -7,7 +7,7 @@ class MembersController < ApplicationController
     message = []
     # メソッド切ったり色々する
     if params[:go_cafeteria]
-      @lab.members.where(status: 0..2).each do | member |
+      @lab.members.where(status: 0..1).each do | member |
         if member.go_cafeteria?
           member.change_status(Member.statuses[:cafeteria], changed_at)
         end
