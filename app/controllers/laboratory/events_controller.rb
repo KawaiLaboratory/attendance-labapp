@@ -15,6 +15,7 @@ class Laboratory::EventsController < ApplicationController
           office:     "#f0ad4e",
           experiment: "#f0ad4e",
           machining:  "#f0ad4e",
+          remotework: "#5bc0de",
           ogigaoka:   "#5bc0de",
           cafeteria:  "#d9534f",
           classwork:  "#5cb85c",

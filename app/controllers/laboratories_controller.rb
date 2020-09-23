@@ -6,7 +6,8 @@ class LaboratoriesController < ApplicationController
     @colors = {
       office:     "warning",
       experiment: "warning",
-      machining:  "warning",
+      #machining: "warning",
+      remotework: "info",
       ogigaoka:   "info",
       cafeteria:  "danger",
       classwork:  "success",

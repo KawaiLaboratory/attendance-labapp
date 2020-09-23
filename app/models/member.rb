@@ -42,15 +42,16 @@ class Member < ApplicationRecord
   enum status: {
     office:      0,
     experiment:  1,
-    machining:   2,
+    #machining:   2,
+    remotework:  2,
     ogigaoka:    3,
     cafeteria:   4,
     classwork:   5,
-    offcampus:  6,
-    athome:     7,
-    jobhunt:    8,
+    offcampus:   6,
+    athome:      7,
+    jobhunt:     8,
     absence:     9,
-    homecaming: 10,
+    homecaming:  10,
   }
   
   def active_logs

@@ -1,3 +1,4 @@
+# コロナにより加工室を在宅に置き換えた
 ja:
   date:
     formats:
@@ -9,6 +10,7 @@ ja:
         office: 在室
         experiment: 実験室
         machining: 加工室
+        remotework: 在宅
         cafeteria: 昼食
         classwork: 授業
         ogigaoka: 扇が丘
@@ -43,6 +45,7 @@ ja:
         office: 在室
         experiment: 実験室
         machining: 加工室
+        remotework: 在宅
         cafeteria: 昼食
         classwork: 授業
         ogigaoka: 扇が丘
@@ -56,6 +59,7 @@ ja:
         office: 在室
         experiment: 実験室
         machining: 加工室
+        remotework: 在宅
         cafeteria: 昼食
         classwork: 授業
         ogigaoka: 扇が丘
