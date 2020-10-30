@@ -27,7 +27,7 @@ class LaboratoriesController < ApplicationController
         @data = []
         current_year = date.beginning_of_financial_year
         12.times do |n|
-          month_started = current_year+(n-1).month
+          month_started = current_year+n.month
           month_log_data = []
           @lab.active_members.each do |member|
             log_data = member.active_logs_at_range(month_started..month_started.end_of_month)
