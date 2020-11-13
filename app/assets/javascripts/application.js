@@ -33,7 +33,7 @@ $(document).on('turbolinks:load', function(){
           var last_updated_at = $(".update").attr("id");
           var started_at = 9;
           var expired_at = 21;
-          
+
           if(today.getDay() != 0){
             if(started_at <= h && h < expired_at){
               $.ajax({
@@ -81,7 +81,7 @@ $(document).on('turbolinks:load', function(){
       ajax_reload();
     }
   });
-  
+
   $(function(){
     $('.btn_radio').change( function() {
       var changed_data = $(this).attr("id").split("_");
@@ -101,29 +101,21 @@ $(document).on('turbolinks:load', function(){
         var before_btn = btn.closest("tr").find("label").not(".btn-link");
         var before_color = before_btn.closest("label").attr("class").split(" ")[0].split("_")[1];
         $(".update").attr("id", event["updated_at"]);
-        
+
         before_btn.closest("label").children("i").remove();
         before_btn.closest("label").removeClass("btn-"+before_color).addClass("btn-link");
 
         btn.closest("label").prepend('<i class="fa fa-circle fa-3x"></i>');
         btn.closest("label").removeClass("btn-link").addClass("btn-"+color);
 
-        $("#NoticeModalBody").addClass("btn-"+color);
-        $("#NoticeModalBody").html(event["message"]);
-        $("#NoticeModal").modal({backdrop: false});
-        setTimeout(function(){
-          $('#NoticeModal').modal('hide');
-          setTimeout(function(){
-            $("#NoticeModalBody").removeClass("btn-"+color);
-          }, 200);
-        },1000);
+        console.log(event);
       })
       .fail(function(){
         location.reload();
       });
     });
   });
-  
+
   $(function () {
     $('#calendar').fullCalendar({
       events: "/laboratory/events.json",
