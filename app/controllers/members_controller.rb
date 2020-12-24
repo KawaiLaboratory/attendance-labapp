@@ -29,7 +29,7 @@ class MembersController < ApplicationController
         if member.status != member_param[:status]
           before_status = member.status_i18n
           member.change_status(member_param[:status], changed_at)
-          message << "#{member.lastname}が#{before_status}から#{member.status_i18n}になりました"
+          message << "#{member.lastname+member.firstname}が#{before_status}から#{member.status_i18n}になりました"
         end
       end
     else #PC(ajax)用
@@ -38,7 +38,7 @@ class MembersController < ApplicationController
         if member.status != member_param[:status]
           before_status = member.status_i18n
           member.change_status(member_param[:status], changed_at)
-          message << "#{member.lastname}が#{before_status}から#{member.status_i18n}になりました"
+          message << "#{member.lastname+member.firstname}が#{before_status}から#{member.status_i18n}になりました"
         end
       end
       @lab.update(member_updated_at: changed_at)
